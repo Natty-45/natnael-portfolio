@@ -23,23 +23,23 @@ export const SOCIALS = [
 export const TOOLBOX = [
   {
     name: "frontend/",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vite", "Redux"],
+    tags: ["React", "TypeScript", "Next.js"],
   },
   {
     name: "mobile/",
-    tags: ["React Native", "Expo", "Flutter", "Firebase", "Push Notifications"],
+    tags: ["React Native", "Expo", "Flutter"],
   },
   {
     name: "backend/",
-    tags: ["Node.js", "Express", "REST", "GraphQL", "WebSockets", "JWT auth"],
+    tags: ["Node.js", "Express", "REST APIs"],
   },
   {
     name: "data/",
-    tags: ["MongoDB", "PostgreSQL", "Redis", "Prisma", "Mongoose"],
+    tags: ["MongoDB", "PostgreSQL", "Prisma"],
   },
   {
     name: "devops/",
-    tags: ["Docker", "GitHub Actions", "AWS", "Vercel", "Nginx", "Linux"],
+    tags: ["Docker", "AWS", "CI/CD"],
   },
 ] as const;
 

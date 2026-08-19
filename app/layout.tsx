@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import Nav from "@/components/nav";
+import Cursor from "@/components/cursor";
 import Footer from "@/components/footer";
 import "./globals.css";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${grotesk.variable} ${plexMono.variable}`}>
       <body>
+        <Cursor />
         <div className="layout">
           <Nav />
           <div className="column">
