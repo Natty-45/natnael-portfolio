@@ -1,13 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { PROJECTS, type Project } from "@/data/projects";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
-import buttons from "./buttons.module.css";
 import styles from "./projects.module.css";
 
-const INITIAL_COUNT = 6;
 const CARD_GLYPHS = ["</>", "{;}", ">_", "\u25AB", "[ ]", "< >", "{ }", "//"];
 
 function parseDate(iso: string): number {
@@ -83,9 +81,7 @@ function ProjectCard({ project }: { project: Project }) {
     </div>
   );
 
-  const hasLinks = Boolean(liveUrl || githubUrl);
-
-  const meta = (hasLinks || date) && (
+  const meta = (liveUrl || githubUrl || date) && (
     <div className={styles.links}>
       {liveUrl && (
         <a className={styles.link} href={liveUrl} target="_blank" rel="noopener">
@@ -122,10 +118,6 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function Projects() {
   const sorted = useMemo(() => sortProjects(PROJECTS), []);
-  const [expanded, setExpanded] = useState(false);
-
-  const limited = sorted.length > INITIAL_COUNT;
-  const visible = limited && !expanded ? sorted.slice(0, INITIAL_COUNT) : sorted;
 
   return (
     <section className={styles.section} id="projects">
@@ -134,36 +126,21 @@ export default function Projects() {
           number="03"
           label="projects"
           title="Things I've built"
-          sub="New projects go in data/projects.ts — the grid renders itself, newest first. Add a thumbnail path anytime to replace the placeholder."
+          sub="Selected work across web and mobile — more on GitHub."
         />
       </Reveal>
 
-      {visible.length ? (
+      {sorted.length ? (
         <div className={styles.grid}>
-          {visible.map((project, i) => (
+          {sorted.map((project, i) => (
             <Reveal key={project.title} delay={(i % 3) * 70}>
               <ProjectCard project={project} />
             </Reveal>
           ))}
         </div>
       ) : (
-        <p className={styles.empty}>
-          No projects yet — add one to <code className="code">data/projects.ts</code>.
-        </p>
+        <p className={styles.empty}>Projects coming soon.</p>
       )}
-
-        {limited && (
-          <div className={styles.more}>
-            <button
-              type="button"
-              className={`${buttons.btn} ${buttons.ghost}`}
-              aria-expanded={expanded}
-              onClick={() => setExpanded((e) => !e)}
-            >
-              {expanded ? "Show fewer" : `View All Projects (${sorted.length})`}
-            </button>
-          </div>
-        )}
     </section>
   );
 }

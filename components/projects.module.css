@@ -189,13 +189,7 @@
   font-size: 3rem;
 }
 
-/* ---------- expander + empty state ---------- */
-
-.more {
-  display: flex;
-  justify-content: center;
-  margin-top: 2.4rem;
-}
+/* ---------- empty state ---------- */
 
 .empty {
   font-family: var(--font-mono);

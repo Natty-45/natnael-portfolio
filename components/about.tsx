@@ -1,29 +1,7 @@
+import { STATS } from "@/data/site";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
 import styles from "./about.module.css";
-
-/* EDIT: swap these chips for your real tech + real icons if you have them */
-const SKILLS = [
-  "React",
-  "React Native",
-  "Expo",
-  "Flutter",
-  "TypeScript",
-  "Next.js",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "PostgreSQL",
-  "Redis",
-  "Prisma",
-  "GraphQL",
-  "Docker",
-  "AWS",
-  "Jest",
-  "Git",
-  "Tailwind CSS",
-  "Vite",
-];
 
 export default function About() {
   return (
@@ -57,15 +35,13 @@ export default function About() {
         </p>
       </Reveal>
 
-      <Reveal delay={80} className={styles.skills}>
-        <p className={styles.skillsLabel}>Toolbox — the things I reach for daily</p>
-        <ul className={styles.skillGrid} role="list">
-          {SKILLS.map((skill) => (
-            <li key={skill} className={styles.skillChip}>
-              {skill}
-            </li>
-          ))}
-        </ul>
+      <Reveal delay={80} className={styles.stats}>
+        {STATS.map((stat) => (
+          <div key={stat.label} className={styles.stat}>
+            <span className={styles.statValue}>{stat.value}</span>
+            <span className={styles.statLabel}>{stat.label}</span>
+          </div>
+        ))}
       </Reveal>
     </section>
   );

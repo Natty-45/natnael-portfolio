@@ -42,13 +42,6 @@
   max-width: 24rem;
 }
 
-.quote {
-  margin-top: 1.15rem;
-  font-size: 0.95rem;
-  color: var(--muted);
-  max-width: 24rem;
-}
-
 .railFoot {
   margin-top: auto;
 }

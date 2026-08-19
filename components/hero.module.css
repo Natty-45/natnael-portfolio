@@ -44,11 +44,8 @@
 
 .inner {
   position: relative;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
   width: 100%;
+  max-width: 40rem;
 }
 
 .eyebrow {
@@ -115,9 +112,6 @@
 }
 
 @media (max-width: 920px) {
-  .inner {
-    grid-template-columns: 1fr;
-  }
   .hero {
     min-height: auto;
     padding-top: calc(var(--nav-h) + 2.5rem);

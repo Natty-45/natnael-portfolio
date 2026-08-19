@@ -1,32 +1,8 @@
+import { TOOLBOX } from "@/data/site";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
 import styles from "./experience.module.css";
 
-/* EDIT: tune these to your real stack */
-const TOOLBOX = [
-  {
-    name: "frontend/",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vite", "Redux"],
-  },
-  {
-    name: "mobile/",
-    tags: ["React Native", "Expo", "Flutter", "Firebase", "Push Notifications"],
-  },
-  {
-    name: "backend/",
-    tags: ["Node.js", "Express", "REST", "GraphQL", "WebSockets", "JWT auth"],
-  },
-  {
-    name: "data/",
-    tags: ["MongoDB", "PostgreSQL", "Redis", "Prisma", "Mongoose"],
-  },
-  {
-    name: "devops/",
-    tags: ["Docker", "GitHub Actions", "AWS", "Vercel", "Nginx", "Linux"],
-  },
-];
-
-/* EDIT: make this timeline reflect your real history */
 const TIMELINE = [
   {
     role: "Freelance Full-Stack Developer",

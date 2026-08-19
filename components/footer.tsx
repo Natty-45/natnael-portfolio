@@ -1,41 +1,38 @@
+import { SITE, SOCIALS } from "@/data/site";
 import { GithubIcon, LinkedinIcon, MailIcon } from "./icons";
 import styles from "./footer.module.css";
+
+const ICONS = { email: MailIcon, github: GithubIcon, linkedin: LinkedinIcon };
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.inner}`}>
-        <p className={styles.item}>© {year} Natnael Ayalew</p>
+      <div className={styles.inner}>
+        <p className={styles.item}>© {year} {SITE.name}</p>
         <p className={`${styles.item} ${styles.mid}`}>built with Next.js</p>
         <p className={`${styles.item} ${styles.status}`}>
           <span className={styles.dot} aria-hidden="true" />
           available for work
         </p>
-        {/* EDIT: replace with your real social links */}
         <div className={styles.socials}>
-          <a href="mailto:hello@natnaelayalew.com" aria-label="Email" className={styles.social}>
-            <MailIcon />
-          </a>
-          <a
-            href="https://github.com/natnaelayalew"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-            className={styles.social}
-          >
-            <GithubIcon />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/natnaelayalew"
-            target="_blank"
-            rel="noopener"
-            aria-label="LinkedIn"
-            className={styles.social}
-          >
-            <LinkedinIcon />
-          </a>
+          {SOCIALS.map(({ key, href }) => {
+            const Icon = ICONS[key];
+            return (
+              <a
+                key={key}
+                href={href}
+                {...(key !== "email"
+                  ? { target: "_blank", rel: "noopener" }
+                  : {})}
+                aria-label={key}
+                className={styles.social}
+              >
+                <Icon />
+              </a>
+            );
+          })}
         </div>
       </div>
     </footer>

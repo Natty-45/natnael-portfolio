@@ -1,22 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { NAV_LINKS, SOCIALS, SITE } from "@/data/site";
 import { GithubIcon, LinkedinIcon, MailIcon } from "./icons";
 import styles from "./nav.module.css";
 
-const LINKS = [
-  { n: "01", href: "#about", label: "About" },
-  { n: "02", href: "#stack", label: "Experience" },
-  { n: "03", href: "#projects", label: "Projects" },
-  { n: "04", href: "#contact", label: "Contact" },
-];
+const ICONS = { email: MailIcon, github: GithubIcon, linkedin: LinkedinIcon };
 
 export default function Nav() {
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const ids = LINKS.map((l) => l.href.slice(1));
+    const ids = NAV_LINKS.map((l) => l.href.slice(1));
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -42,6 +38,11 @@ export default function Nav() {
 
   const close = () => setOpen(false);
 
+  const socials = SOCIALS.map(({ key, href }) => {
+    const Icon = ICONS[key];
+    return { key, href, Icon };
+  });
+
   return (
     <>
       {/* ---- mobile: top bar + overlay menu ---- */}
@@ -49,7 +50,7 @@ export default function Nav() {
         className={`${styles.topbar} ${open ? styles.topbarOpen : ""}`.trim()}
       >
         <a className={styles.topbarName} href="#about" onClick={close}>
-          Natnael Ayalew
+          {SITE.name}
         </a>
         <button
           className={styles.burger}
@@ -67,34 +68,26 @@ export default function Nav() {
       {open && (
         <div className={styles.mobileMenu} id="mobileMenu">
           <nav className={styles.mobileLinks} aria-label="Primary">
-            {LINKS.map((link) => (
+            {NAV_LINKS.map((link) => (
               <a key={link.href} href={link.href} onClick={close}>
                 <span className={styles.mobileNum}>{link.n}.</span>
                 {link.label}
               </a>
             ))}
           </nav>
-          {/* EDIT: replace with your real links */}
           <div className={styles.mobileSocials}>
-            <a href="mailto:hello@natnaelayalew.com" aria-label="Email">
-              <MailIcon />
-            </a>
-            <a
-              href="https://github.com/natnaelayalew"
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub"
-            >
-              <GithubIcon />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/natnaelayalew"
-              target="_blank"
-              rel="noopener"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon />
-            </a>
+            {socials.map(({ key, href, Icon }) => (
+              <a
+                key={key}
+                href={href}
+                {...(key !== "email"
+                  ? { target: "_blank", rel: "noopener" }
+                  : {})}
+                aria-label={key}
+              >
+                <Icon />
+              </a>
+            ))}
           </div>
         </div>
       )}
@@ -102,19 +95,12 @@ export default function Nav() {
       {/* ---- desktop: sticky rail ---- */}
       <aside className={styles.rail}>
         <a className={styles.name} href="#about" onClick={close}>
-          Natnael Ayalew
+          {SITE.name}
         </a>
-        <p className={styles.tagline}>
-          Full-Stack Developer building for web &amp; mobile.
-        </p>
-        <p className={styles.quote}>
-          I take products from first commit to production: APIs that hold up,
-          interfaces people don't have to think about — on the web or in your
-          pocket — and deployments that don't keep anyone awake.
-        </p>
+        <p className={styles.tagline}>{SITE.role}.</p>
 
         <nav className={styles.railNav} aria-label="Primary">
-          {LINKS.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -128,30 +114,22 @@ export default function Nav() {
 
         <div className={styles.railFoot}>
           <div className={styles.socials}>
-            {/* EDIT: replace with your real links */}
-            <a href="mailto:hello@natnaelayalew.com" aria-label="Email">
-              <MailIcon />
-            </a>
-            <a
-              href="https://github.com/natnaelayalew"
-              target="_blank"
-              rel="noopener"
-              aria-label="GitHub"
-            >
-              <GithubIcon />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/natnaelayalew"
-              target="_blank"
-              rel="noopener"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon />
-            </a>
+            {socials.map(({ key, href, Icon }) => (
+              <a
+                key={key}
+                href={href}
+                {...(key !== "email"
+                  ? { target: "_blank", rel: "noopener" }
+                  : {})}
+                aria-label={key}
+              >
+                <Icon />
+              </a>
+            ))}
           </div>
           <p className={styles.status}>
             <span className={styles.dot} aria-hidden="true" />
-            available for work — open to freelance &amp; remote
+            {SITE.status}
           </p>
         </div>
       </aside>

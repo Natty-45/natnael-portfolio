@@ -41,26 +41,3 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 30px -12px var(--accent-glow);
 }
-
-.icon {
-  width: 100%;
-  justify-content: flex-start;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.9rem 1.1rem;
-  background: var(--bg-panel);
-  border-color: var(--line);
-  color: var(--text);
-  text-align: left;
-}
-.icon svg {
-  width: 1.1rem;
-  height: 1.1rem;
-  color: var(--accent);
-  flex-shrink: 0;
-}
-.icon:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px -12px var(--accent-glow);
-}

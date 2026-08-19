@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { SITE, SOCIALS } from "@/data/site";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
 import { GithubIcon, LinkedinIcon, MailIcon } from "./icons";
@@ -8,6 +9,8 @@ import buttons from "./buttons.module.css";
 import styles from "./contact.module.css";
 
 type FieldName = "name" | "email" | "message";
+
+const ICONS = { email: MailIcon, github: GithubIcon, linkedin: LinkedinIcon };
 
 const FIELDS: {
   name: FieldName;
@@ -44,28 +47,6 @@ const FIELDS: {
   },
 ];
 
-/* EDIT: replace with your real links */
-const LINKS = [
-  {
-    label: "Email",
-    href: "mailto:hello@natnaelayalew.com",
-    external: false,
-    Icon: MailIcon,
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/natnaelayalew",
-    external: true,
-    Icon: GithubIcon,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/natnaelayalew",
-    external: true,
-    Icon: LinkedinIcon,
-  },
-];
-
 const VALIDATORS: Record<FieldName, (v: string) => boolean> = {
   name: FIELDS[0].validate,
   email: FIELDS[1].validate,
@@ -80,7 +61,6 @@ const MESSAGES: Record<FieldName, string> = {
 
 export default function Contact() {
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
-  const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -104,9 +84,15 @@ export default function Contact() {
       return;
     }
 
-    // EDIT: wire this to a real backend (e.g. Formspree, an email API,
-    // or a mailto: link) — the handler below only validates.
-    setSent(true);
+    const values = Object.fromEntries(
+      FIELDS.map((f) => [f.name, form.elements.namedItem(f.name)])
+    ) as Record<FieldName, HTMLInputElement | HTMLTextAreaElement>;
+
+    const subject = encodeURIComponent(`Project inquiry from ${values.name.value}`);
+    const body = encodeURIComponent(
+      `${values.message.value}\n\n— ${values.name.value} (${values.email.value})`
+    );
+    window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
   };
 
   const clearError = (name: FieldName) =>
@@ -124,17 +110,20 @@ export default function Contact() {
       </Reveal>
 
       <Reveal className={styles.iconRow} delay={60}>
-        {LINKS.map(({ label, href, external, Icon }) => (
-          <a
-            key={label}
-            className={styles.iconLink}
-            href={href}
-            {...(external ? { target: "_blank", rel: "noopener" } : {})}
-          >
-            <Icon />
-            {label}
-          </a>
-        ))}
+        {SOCIALS.map(({ key, label, href, external }) => {
+          const Icon = ICONS[key];
+          return (
+            <a
+              key={key}
+              className={styles.iconLink}
+              href={href}
+              {...(external ? { target: "_blank", rel: "noopener" } : {})}
+            >
+              <Icon />
+              {label}
+            </a>
+          );
+        })}
       </Reveal>
 
       <Reveal delay={120}>
@@ -181,16 +170,6 @@ export default function Contact() {
           >
             Send Message
           </button>
-
-          {/* Shown after submit — see the EDIT note in this component */}
-          <div
-            className={`${styles.success} ${sent ? styles.visible : ""}`.trim()}
-            role="status"
-          >
-            Message ready to send. This demo form isn't connected to a backend
-            yet — wire it up in{" "}
-            <code className="code">components/contact.tsx</code>.
-          </div>
         </form>
       </Reveal>
     </section>
