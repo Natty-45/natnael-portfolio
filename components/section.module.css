@@ -1,0 +1,17 @@
+.head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.title {
+  margin-top: 0.9rem;
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  margin-top: 1rem;
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}

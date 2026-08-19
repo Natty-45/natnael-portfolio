@@ -1,0 +1,62 @@
+.section {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.bio p + p {
+  margin-top: 1.2rem;
+}
+
+.bio p {
+  color: #c8d1e0;
+}
+
+.bio p:last-child {
+  color: var(--muted);
+}
+
+.skills {
+  margin-top: 2.4rem;
+}
+
+.skillsLabel {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 0.6rem;
+}
+
+.skillChip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 0.55rem 0.6rem;
+  text-align: center;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.skillChip::before {
+  content: "◆";
+  color: var(--accent);
+  font-size: 0.55rem;
+  vertical-align: 1px;
+  margin-right: 0.45rem;
+}
+
+.skillChip:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
