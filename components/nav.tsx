@@ -105,12 +105,12 @@ export default function Nav() {
           Natnael Ayalew
         </a>
         <p className={styles.tagline}>
-          Full-Stack Developer building scalable web applications.
+          Full-Stack Developer building for web &amp; mobile.
         </p>
         <p className={styles.quote}>
           I take products from first commit to production: APIs that hold up,
-          interfaces people don't have to think about, and deployments that
-          don't keep anyone awake.
+          interfaces people don't have to think about — on the web or in your
+          pocket — and deployments that don't keep anyone awake.
         </p>
 
         <nav className={styles.railNav} aria-label="Primary">

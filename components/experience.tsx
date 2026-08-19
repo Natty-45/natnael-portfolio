@@ -9,6 +9,10 @@ const TOOLBOX = [
     tags: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vite", "Redux"],
   },
   {
+    name: "mobile/",
+    tags: ["React Native", "Expo", "Flutter", "Firebase", "Push Notifications"],
+  },
+  {
     name: "backend/",
     tags: ["Node.js", "Express", "REST", "GraphQL", "WebSockets", "JWT auth"],
   },
@@ -27,12 +31,12 @@ const TIMELINE = [
   {
     role: "Freelance Full-Stack Developer",
     meta: "2024 — Now · Independent",
-    desc: "Building a complete garage management system — booking, job cards, inventory, billing — with role-based access for the whole shop team.",
+    desc: "Building a complete garage management system — booking, job cards, inventory, billing — with role-based access for the whole shop team, plus mobile apps for on-site crews.",
   },
   {
     role: "Full-Stack Developer",
-    meta: "2022 — 2024 · Web studio",
-    desc: "Shipped React + Node features across 8+ client products: dashboards, booking flows, admin tools, integrations.",
+    meta: "2022 — 2024 · Web & mobile studio",
+    desc: "Shipped React, React Native and Node features across 8+ client products: dashboards, booking flows, admin tools, integrations and companion mobile apps.",
   },
   {
     role: "Junior Web Developer",

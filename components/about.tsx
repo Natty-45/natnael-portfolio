@@ -5,6 +5,9 @@ import styles from "./about.module.css";
 /* EDIT: swap these chips for your real tech + real icons if you have them */
 const SKILLS = [
   "React",
+  "React Native",
+  "Expo",
+  "Flutter",
   "TypeScript",
   "Next.js",
   "Node.js",
@@ -35,8 +38,8 @@ export default function About() {
           through the whole journey — from the first{" "}
           <code className="code">git init</code> to the day the people who need
           it are actually using it. My home turf is the stack that connects a
-          database to a browser: React on the front, Node.js on the back, and
-          whatever it takes in between.
+          database to a screen — web or mobile: React and React Native on the
+          front, Node.js on the back, and whatever it takes in between.
         </p>
         <p>
           I work in small, deliberately simple modules. Each one has a clear

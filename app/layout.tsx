@@ -18,11 +18,11 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Natnael Ayalew — Full-Stack Developer",
   description:
-    "Portfolio of Natnael Ayalew, a full-stack web developer building scalable web applications with React, Node.js and databases.",
+    "Portfolio of Natnael Ayalew, a full-stack developer building web and mobile applications with React, React Native, Node.js and databases.",
   openGraph: {
     title: "Natnael Ayalew — Full-Stack Developer",
     description:
-      "Full-stack web developer building scalable web applications with React, Node.js and databases.",
+      "Full-stack developer building web and mobile applications with React, React Native, Node.js and databases.",
     type: "website",
   },
 };

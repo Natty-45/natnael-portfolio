@@ -19,12 +19,12 @@ export default function Hero() {
             Ayalew<span className={styles.cursor} aria-hidden="true" />
           </h1>
           <p className={styles.tagline}>
-            Full-Stack Developer building scalable web applications.
+            Full-Stack Developer building for web &amp; mobile.
           </p>
           <p className={styles.value}>
             I take products from first commit to production: APIs that hold up,
-            interfaces people don't have to think about, and deployments that
-            don't keep anyone awake.
+            interfaces people don't have to think about — on the web or in
+            your pocket — and deployments that don't keep anyone awake.
           </p>
 
           <div className={styles.actions}>
