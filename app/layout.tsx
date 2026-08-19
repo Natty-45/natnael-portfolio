@@ -34,11 +34,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${grotesk.variable} ${plexMono.variable}`}>
       <body>
+        <a className="skip-link" href="#main">Skip to content</a>
         <Cursor />
         <div className="layout">
           <Nav />
           <div className="column">
-            <main>{children}</main>
+            <main id="main">{children}</main>
             <Footer />
           </div>
         </div>

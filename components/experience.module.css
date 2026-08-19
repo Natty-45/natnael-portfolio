@@ -2,127 +2,145 @@
   padding-block: clamp(3.5rem, 7vw, 6rem);
 }
 
-.tools {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
+/* ---------- accordion ---------- */
 
-.tool {
-  background: var(--bg-panel);
-  border: 1px solid var(--line);
+.accordion {
+  display: flex;
+  flex-direction: column;
   border-radius: var(--radius);
-  padding: 1.2rem 1.2rem 1.3rem;
-  transition: border-color 0.2s ease;
 }
 
-.tool:hover {
-  border-color: var(--accent-dim);
+/* ---------- tabs (vertical on desktop, horizontal on mobile) ---------- */
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  border-bottom: 2px solid var(--line);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.toolName {
+.tab {
+  position: relative;
+  flex-shrink: 0;
+  width: max-content;
+  padding: 0 1.5rem 0.85rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
-  color: var(--accent-strong);
-  margin-bottom: 0.9rem;
-}
-
-.toolName::after {
-  content: " —";
-  color: var(--accent);
-}
-
-.toolTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.9rem;
-}
-
-.toolTags li {
-  font-size: 0.86rem;
   color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: left;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.toolTags li::before {
-  content: "▸";
+.tab:hover {
   color: var(--accent);
-  margin-right: 0.35rem;
-  font-size: 0.7rem;
 }
 
-/* ---------- timeline ---------- */
-
-.timeline {
-  margin-top: 3.5rem;
-  padding-left: 1.2rem;
-}
-
-.timelineList {
-  position: relative;
-}
-
-.timelineList::before {
-  content: "";
-  position: absolute;
-  left: 0.66rem;
-  top: 0.4rem;
-  bottom: 0.4rem;
-  width: 1px;
-  background: var(--line);
-}
-
-.timelineItem {
-  position: relative;
-  padding-left: 2.6rem;
-  padding-bottom: 2.4rem;
-}
-
-.timelineItem:last-child {
-  padding-bottom: 0;
-}
-
-.step {
-  position: absolute;
-  left: 0;
-  top: 0.1rem;
-  width: 1.35rem;
-  height: 1.35rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 600;
+.tabActive {
   color: var(--accent);
-  background: var(--bg);
-  border: 1px solid var(--accent-dim);
-  border-radius: 50%;
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- panel ---------- */
+
+.panel {
+  padding: 2rem 0 0;
+}
+
+.panel[hidden] {
+  display: none;
 }
 
 .role {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  color: var(--text);
 }
 
-.meta {
-  margin-top: 0.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.06em;
+.at {
+  color: var(--accent);
+}
+
+.company {
   color: var(--accent-strong);
 }
 
-.desc {
-  margin-top: 0.55rem;
-  font-size: 0.92rem;
+.period {
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   color: var(--muted);
-  max-width: 30rem;
 }
 
-@media (max-width: 720px) {
-  .tools {
-    grid-template-columns: 1fr;
+.description {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #c8d1e0;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin-top: 1.4rem;
+}
+
+.tech li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(100, 255, 218, 0.12);
+  border-radius: var(--radius);
+  padding: 0.25rem 0.55rem;
+}
+
+/* ---------- desktop: two-column layout ---------- */
+
+@media (min-width: 700px) {
+  .accordion {
+    flex-direction: row;
+    gap: 0;
+    min-height: 22rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+    width: 10rem;
+    flex-shrink: 0;
+    border-bottom: 0;
+    border-right: 2px solid var(--line);
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  .tab {
+    width: 100%;
+    padding: 0.85rem 1.5rem 0.85rem 0;
+    border-bottom: 0;
+    margin-bottom: 0;
+    border-right: 2px solid transparent;
+    margin-right: -2px;
+  }
+
+  .tabActive {
+    border-right-color: var(--accent);
+    border-bottom-color: transparent;
+  }
+
+  .panel {
+    padding: 0.5rem 0 0 2.5rem;
+    flex: 1;
   }
 }

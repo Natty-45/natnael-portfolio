@@ -70,7 +70,6 @@ export default function Nav() {
           <nav className={styles.mobileLinks} aria-label="Primary">
             {NAV_LINKS.map((link) => (
               <a key={link.href} href={link.href} onClick={close}>
-                <span className={styles.mobileNum}>{link.n}.</span>
                 {link.label}
               </a>
             ))}
@@ -92,7 +91,7 @@ export default function Nav() {
         </div>
       )}
 
-      {/* ---- desktop: sticky rail ---- */}
+      {/* ---- desktop: fixed rail ---- */}
       <aside className={styles.rail}>
         <a className={styles.name} href="#about" onClick={close}>
           {SITE.name}
@@ -106,7 +105,6 @@ export default function Nav() {
               href={link.href}
               aria-current={active === link.href ? "true" : undefined}
             >
-              <span className={styles.railNum}>{link.n}.</span>
               {link.label}
             </a>
           ))}

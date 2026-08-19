@@ -11,10 +11,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <p className={styles.item}>© {year} {SITE.name}</p>
-        <p className={`${styles.item} ${styles.mid}`}>built with Next.js</p>
-        <p className={`${styles.item} ${styles.status}`}>
-          <span className={styles.dot} aria-hidden="true" />
-          available for work
+        <p className={`${styles.item} ${styles.mid}`}>
+          loosely designed in Figma and coded in Visual Studio Code by yours
+          truly. built with Next.js and CSS Modules, deployed on Vercel.
         </p>
         <div className={styles.socials}>
           {SOCIALS.map(({ key, href }) => {

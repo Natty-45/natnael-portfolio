@@ -6,8 +6,6 @@ import SectionHead from "./section-head";
 import Reveal from "./reveal";
 import styles from "./projects.module.css";
 
-const CARD_GLYPHS = ["</>", "{;}", ">_", "\u25AB", "[ ]", "< >", "{ }", "//"];
-
 function parseDate(iso: string): number {
   if (!iso) return 0;
   const [y, m, d] = iso.split("-").map(Number);
@@ -21,97 +19,38 @@ function sortProjects(projects: Project[]): Project[] {
   });
 }
 
-function formatDate(iso: string): string {
-  if (!iso) return "";
-  return new Date(parseDate(iso)).toLocaleDateString("en-US", {
-    month: "short",
-    year: "numeric",
-  });
-}
-
-function thumbFile(title: string): string {
-  return (
-    title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") +
-    ".png"
-  );
-}
-
-function glyphFor(title: string): string {
-  let h = 0;
-  for (let i = 0; i < title.length; i++)
-    h = (h * 31 + title.charCodeAt(i)) % 997;
-  return CARD_GLYPHS[h % CARD_GLYPHS.length];
-}
-
 function ProjectCard({ project }: { project: Project }) {
-  const { title, description, techStack, thumbnail, liveUrl, githubUrl, featured, date } =
-    project;
+  const { title, description, techStack, liveUrl, githubUrl } = project;
 
-  const thumbInner = thumbnail ? (
-    <img src={thumbnail} alt={`${title} — screenshot`} loading="lazy" />
-  ) : (
-    <>
-      <span className={styles.thumbFile}>{thumbFile(title)}</span>
-      <span className={styles.thumbGlyph} aria-hidden="true">
-        {glyphFor(title)}
-      </span>
-    </>
-  );
-
-  const badge = featured && (
-    <span className={styles.badge}>featured</span>
-  );
-
-  const thumb = liveUrl ? (
-    <a
-      className={styles.thumb}
-      href={liveUrl}
-      target="_blank"
-      rel="noopener"
-      aria-label={`${title} — live demo`}
-      tabIndex={-1}
-    >
-      {badge}
-      {thumbInner}
-    </a>
-  ) : (
-    <div className={styles.thumb}>
-      {badge}
-      {thumbInner}
-    </div>
-  );
-
-  const meta = (liveUrl || githubUrl || date) && (
-    <div className={styles.links}>
-      {liveUrl && (
-        <a className={styles.link} href={liveUrl} target="_blank" rel="noopener">
-          Live demo ↗
-        </a>
-      )}
-      {githubUrl && (
-        <a className={styles.link} href={githubUrl} target="_blank" rel="noopener">
-          GitHub ↗
-        </a>
-      )}
-      {date && <span className={styles.date}>{formatDate(date)}</span>}
-    </div>
-  );
+  const link = liveUrl || githubUrl;
 
   return (
-    <article className={`${styles.card} ${featured ? styles.featured : ""}`}>
-      {thumb}
-      <div className={styles.body}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.desc}>{description}</p>
-        <ul className={styles.tagRow} role="list">
-          {techStack.map((tag) => (
-            <li key={tag} className={styles.tag}>
-              {tag}
-            </li>
-          ))}
-        </ul>
-        {meta}
+    <article className={styles.project}>
+      <div className={styles.header}>
+        <h3 className={styles.title}>
+          {link ? (
+            <a href={link} target="_blank" rel="noopener">
+              {title}
+            </a>
+          ) : (
+            title
+          )}
+        </h3>
+        {link && (
+          <span className={styles.icon} aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </span>
+        )}
       </div>
+      <p className={styles.desc}>{description}</p>
+      <ul className={styles.tagRow} role="list">
+        {techStack.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
     </article>
   );
 }
@@ -122,16 +61,11 @@ export default function Projects() {
   return (
     <section className={styles.section} id="projects">
       <Reveal>
-        <SectionHead
-          number="03"
-          label="projects"
-          title="Things I've built"
-          sub="Selected work across web and mobile — more on GitHub."
-        />
+        <SectionHead label="projects" title="Things I've built" />
       </Reveal>
 
       {sorted.length ? (
-        <div className={styles.grid}>
+        <div className={styles.list}>
           {sorted.map((project, i) => (
             <Reveal key={project.title} delay={(i % 3) * 70}>
               <ProjectCard project={project} />

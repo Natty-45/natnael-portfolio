@@ -5,26 +5,31 @@
    ============================================================ */
 
 :root {
-  --bg: #0b0e14;
-  --bg-panel: #10151f;
-  --line: #1f2735;
-  --line-soft: #1a212d;
-  --text: #e8edf6;
-  --muted: #93a0b8;
-  --accent: #6ea8fe;
-  --accent-strong: #8fbeff;
-  --accent-dim: rgba(110, 168, 254, 0.14);
-  --accent-glow: rgba(110, 168, 254, 0.35);
+  --bg: #0a192f;
+  --bg-panel: #112240;
+  --line: #233554;
+  --line-soft: #1d3557;
+  --text: #ccd6f6;
+  --muted: #8892b0;
+  --accent: #64ffda;
+  --accent-strong: #ccd6f6;
+  --accent-dim: rgba(100, 255, 218, 0.1);
+  --accent-glow: rgba(100, 255, 218, 0.3);
   --error: #f87171;
 
   --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, "Cascadia Code", monospace;
 
-  --radius: 10px;
+  --radius: 4px;
   --nav-h: 64px;
+  --sidebar-w: 280px;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -36,19 +41,43 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-display);
-  font-size: 1.02rem;
+  font-size: 1rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.12; margin: 0; }
-p { margin: 0; }
-a { color: inherit; text-decoration: none; }
-ul, ol { margin: 0; padding: 0; list-style: none; }
-img { max-width: 100%; display: block; }
-button { font-family: inherit; }
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.12;
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+button {
+  font-family: inherit;
+}
 
-::selection { background: var(--accent); color: var(--bg); }
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -56,23 +85,33 @@ button { font-family: inherit; }
   border-radius: 4px;
 }
 
-/* ---------- layout: split rail (desktop) / single column (mobile) ---------- */
+/* ---------- layout: fixed sidebar (desktop) / single column (mobile) ---------- */
 
 @media (min-width: 900px) {
   .layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    min-height: 100vh;
   }
 }
 
 .column {
-  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  margin-left: 0;
+  padding-inline: clamp(2.5rem, 6vw, 6rem);
   padding-top: clamp(4rem, 8vh, 6rem);
+  max-width: 900px;
+  flex: 1;
+}
+
+@media (min-width: 900px) {
+  .column {
+    margin-left: var(--sidebar-w);
+  }
 }
 
 @media (max-width: 899px) {
   .column {
-    padding-top: calc(var(--nav-h) + 4rem);
+    padding-top: calc(var(--nav-h) + 3rem);
+    padding-inline: clamp(1.5rem, 5vw, 3rem);
   }
 }
 
@@ -84,7 +123,7 @@ button { font-family: inherit; }
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent);
 }
 .eyebrow i {
   font-style: normal;
@@ -98,15 +137,61 @@ button { font-family: inherit; }
   border: 1px solid var(--line);
   border-radius: 5px;
   padding: 0.1em 0.4em;
-  color: var(--accent-strong);
+  color: var(--accent);
 }
 
 /* ---------- reduced motion (global fallback) ---------- */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ---------- scrollbar ---------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) var(--bg);
+}
+
+/* ---------- skip link ---------- */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
 }

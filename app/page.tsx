@@ -1,16 +1,16 @@
-import Hero from "@/components/hero";
 import About from "@/components/about";
-import Projects from "@/components/projects";
 import Experience from "@/components/experience";
+import Projects from "@/components/projects";
+import Archive from "@/components/archive";
 import Contact from "@/components/contact";
 
 export default function Home() {
   return (
     <>
-      <Hero />
       <About />
-      <Projects />
       <Experience />
+      <Projects />
+      <Archive />
       <Contact />
     </>
   );
