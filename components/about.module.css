@@ -13,3 +13,8 @@
 .bio p:last-child {
   color: var(--muted);
 }
+
+.bio strong {
+  color: var(--text);
+  font-weight: 600;
+}

@@ -18,15 +18,11 @@ export default function About() {
           little details that separate a good product from an exceptional one.
         </p>
         <p>
-          Currently, I&apos;m building a complete garage management system —
-          booking, job cards, inventory, billing — with role-based access for
-          the whole shop team, plus mobile apps for on-site crews.
-        </p>
-        <p>
-          Previously, I&apos;ve worked across a wide range of environments —
-          from product studios to agencies — shipping React, React Native, and
-          Node.js features across 8+ client products: dashboards, booking
-          flows, admin tools, integrations, and companion mobile apps.
+          I started as a frontend developer and grew into full-stack,
+          working across the entire product lifecycle — from UI to server
+          and database. I build with React, React Native, Node.js and
+          databases, and I care about shipping things that are simple,
+          testable and easy to change.
         </p>
         <p>
           I work in small, deliberately simple modules. Each one has a clear

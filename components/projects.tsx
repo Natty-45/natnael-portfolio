@@ -25,17 +25,15 @@ function ProjectCard({ project }: { project: Project }) {
   const link = liveUrl || githubUrl;
 
   return (
-    <article className={styles.project}>
-      <div className={styles.header}>
-        <h3 className={styles.title}>
-          {link ? (
-            <a href={link} target="_blank" rel="noopener">
-              {title}
-            </a>
-          ) : (
-            title
-          )}
-        </h3>
+    <a
+      className={styles.card}
+      href={link || undefined}
+      target={link ? "_blank" : undefined}
+      rel={link ? "noopener noreferrer" : undefined}
+      {...(!link ? { tabIndex: -1, "aria-disabled": "true" } : {})}
+    >
+      <div className={styles.cardTop}>
+        <h3 className={styles.title}>{title}</h3>
         {link && (
           <span className={styles.icon} aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -51,7 +49,7 @@ function ProjectCard({ project }: { project: Project }) {
           <li key={tag}>{tag}</li>
         ))}
       </ul>
-    </article>
+    </a>
   );
 }
 
@@ -59,9 +57,9 @@ export default function Projects() {
   const sorted = useMemo(() => sortProjects(PROJECTS), []);
 
   return (
-    <section className={styles.section} id="projects">
+    <section className={styles.section} id="work">
       <Reveal>
-        <SectionHead label="projects" title="Things I've built" />
+        <SectionHead label="work" title="Things I've built" />
       </Reveal>
 
       {sorted.length ? (

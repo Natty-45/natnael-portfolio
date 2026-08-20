@@ -15,7 +15,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 280px;
+    width: 40vw;
     height: 100vh;
     overflow-y: auto;
     padding: clamp(2rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3.5rem)

@@ -9,26 +9,26 @@ const JOBS = [
   {
     role: "Freelance Full-Stack Developer",
     company: "Independent",
-    period: "2024 — Present",
+    period: "2023 — Present",
     description:
-      "Building a complete garage management system — booking, job cards, inventory, billing — with role-based access for the whole shop team, plus mobile apps for on-site crews.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "React Native"],
+      "Building web and mobile projects for clients: charity websites, landing pages, digital menus, business card sites, and a raffle app. Collaborating with teams and shipping end-to-end.",
+    tech: ["React", "React Native", "Node.js", "MongoDB", "Express"],
+  },
+  {
+    role: "IT Support",
+    company: "Melo Plus Trading",
+    period: "2025 — 2025",
+    description:
+      "Managed systems and IT infrastructure for the business, ensuring reliable operations and technical support across the team.",
+    tech: ["IT Support", "Systems Admin", "Networking"],
   },
   {
     role: "Full-Stack Developer",
-    company: "Web & Mobile Studio",
-    period: "2022 — 2024",
+    company: "BT Creative",
+    period: "2024 — 2025",
     description:
-      "Shipped React, React Native and Node features across 8+ client products: dashboards, booking flows, admin tools, integrations and companion mobile apps.",
-    tech: ["React", "React Native", "Node.js", "TypeScript", "PostgreSQL"],
-  },
-  {
-    role: "Junior Web Developer",
-    company: "Agency Work",
-    period: "2021 — 2022",
-    description:
-      "Learned the craft the honest way: production bugs, code reviews, and a lot of SQL.",
-    tech: ["JavaScript", "HTML", "CSS", "SQL"],
+      "Started as a frontend developer and grew into a full-stack role, working across the entire product lifecycle — UI, server, and database. Built landing pages, a raffle app, and other client products.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "TypeScript"],
   },
 ];
 

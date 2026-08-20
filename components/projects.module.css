@@ -2,74 +2,88 @@
   padding-block: clamp(3.5rem, 7vw, 6rem);
 }
 
-/* ---------- list ---------- */
+/* ---------- grid ---------- */
 
 .list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------- card ---------- */
+
+.card {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  padding: 1.75rem 1.5rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+  cursor: pointer;
 }
 
-/* ---------- project item ---------- */
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 24px -6px var(--accent-glow), 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
 
-.project {
+.card[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.card[aria-disabled="true"]:hover {
+  border-color: var(--line);
+  box-shadow: none;
+  transform: none;
+}
+
+/* ---------- card top row ---------- */
+
+.cardTop {
   display: flex;
-  flex-direction: column;
-  padding: 1.75rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.project:first-child {
-  padding-top: 0;
-}
-
-.project:last-child {
-  border-bottom: 0;
-}
-
-.header {
-  display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.6rem;
 }
 
 .title {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--text);
   transition: color 0.2s ease;
 }
 
-.title a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.project:hover .title,
-.title a:hover {
+.card:hover .title {
   color: var(--accent);
-}
-
-.title a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
 }
 
 .icon {
   color: var(--accent);
   flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .icon {
+  transform: translate(2px, -2px);
 }
 
 .icon svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .desc {
-  margin-top: 0.55rem;
-  font-size: 0.92rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
   line-height: 1.65;
   color: var(--muted);
 }
@@ -77,11 +91,18 @@
 .tagRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  margin-top: 1rem;
+  gap: 0.5rem 0.6rem;
+  margin-top: 1.25rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--accent-strong);
+  font-size: 0.7rem;
+}
+
+.tagRow li {
+  background: var(--accent-dim);
+  color: var(--accent);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
 }
 
 /* ---------- empty state ---------- */

@@ -26,7 +26,7 @@ export default function Reveal({ children, delay = 0, className = "" }: RevealPr
           io.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
     );
     io.observe(el);
     return () => io.disconnect();

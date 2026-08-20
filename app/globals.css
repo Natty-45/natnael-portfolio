@@ -22,7 +22,7 @@
 
   --radius: 4px;
   --nav-h: 64px;
-  --sidebar-w: 280px;
+  --sidebar-w: 40vw;
 }
 
 *,
@@ -98,7 +98,6 @@ button {
   margin-left: 0;
   padding-inline: clamp(2.5rem, 6vw, 6rem);
   padding-top: clamp(4rem, 8vh, 6rem);
-  max-width: 900px;
   flex: 1;
 }
 
