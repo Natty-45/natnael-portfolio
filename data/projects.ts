@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
       "Marketing landing page for BT Creative studio, built to showcase services and attract clients.",
     techStack: ["React", "HTML", "CSS"],
     thumbnail: "",
-    liveUrl: "",
+    liveUrl: "https://btcreativeaddis.com",
     githubUrl: "",
     featured: false,
     date: "2025-08-01",
