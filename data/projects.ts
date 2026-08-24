@@ -24,8 +24,8 @@ export const PROJECTS: Project[] = [
   {
     title: "Hope for Ethiopia",
     description:
-      "Charity website for an Atlanta-based non-profit, showcasing their mission and initiatives.",
-    techStack: ["React", "HTML", "CSS"],
+      "Full-stack charity website for an Atlanta-based non-profit — backend handles donations and event management, frontend showcases their mission and initiatives.",
+    techStack: ["Next.js", "Node.js", "Express", "MongoDB"],
     thumbnail: "",
     liveUrl: "https://hope-for-ethiopia-charity.vercel.app/#/",
     githubUrl: "",
