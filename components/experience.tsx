@@ -17,7 +17,7 @@ const JOBS = [
   {
     role: "IT Support",
     company: "Melo Plus Trading",
-    period: "2025 — 2025",
+    period: "2025 — 2026",
     description:
       "Managed systems and IT infrastructure for the business, ensuring reliable operations and technical support across the team.",
     tech: ["IT Support", "Systems Admin", "Networking"],
@@ -25,7 +25,7 @@ const JOBS = [
   {
     role: "Full-Stack Developer",
     company: "BT Creative",
-    period: "2024 — 2025",
+    period: "2025 — 2025",
     description:
       "Started as a frontend developer and grew into a full-stack role, working across the entire product lifecycle — UI, server, and database. Built landing pages, a raffle app, and other client products.",
     tech: ["React", "Node.js", "Express", "MongoDB", "TypeScript"],

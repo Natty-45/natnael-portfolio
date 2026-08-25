@@ -9,6 +9,7 @@ export type Project = {
   date: string;
 };
 
+// NOTE: These are the noteworthy projects — do NOT delete them.
 export const PROJECTS: Project[] = [
   {
     title: "Autoshop Management System",
@@ -53,17 +54,6 @@ export const PROJECTS: Project[] = [
     githubUrl: "",
     featured: false,
     date: "2025-08-01",
-  },
-  {
-    title: "BT Creative Raffle App",
-    description:
-      "Collaborative full-stack raffle app built with a teammate — handling ticket management, winner selection and real-time updates.",
-    techStack: ["React", "Node.js", "Express", "MongoDB"],
-    thumbnail: "",
-    liveUrl: "",
-    githubUrl: "",
-    featured: false,
-    date: "2025-06-01",
   },
   {
     title: "ETH Connect",

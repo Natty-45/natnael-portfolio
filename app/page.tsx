@@ -1,7 +1,7 @@
 import About from "@/components/about";
 import Experience from "@/components/experience";
 import Projects from "@/components/projects";
-import Archive from "@/components/archive";
+// import Archive from "@/components/archive";
 import Contact from "@/components/contact";
 
 export default function Home() {
@@ -10,7 +10,8 @@ export default function Home() {
       <About />
       <Experience />
       <Projects />
-      <Archive />
+      {/* Archive section hidden for now */}
+      {/* <Archive /> */}
       <Contact />
     </>
   );
