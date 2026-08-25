@@ -12,12 +12,12 @@ export type Project = {
 // NOTE: These are the noteworthy projects — do NOT delete them.
 export const PROJECTS: Project[] = [
   {
-    title: "Autoshop Management System",
+    title: "Event Management System",
     description:
-      "Complete garage management platform: customer & vehicle records, job cards, inventory and billing, with role-based access for the whole shop team.",
-    techStack: ["React", "Node.js", "Express", "MongoDB"],
+      "MERN stack senior-year final project — a full platform for creating and managing events, with attendees, scheduling and role-based dashboards.",
+    techStack: ["MongoDB", "Express", "React", "Node.js"],
     thumbnail: "",
-    liveUrl: "",
+    liveUrl: "https://ems-project-fkmp-eta.vercel.app/",
     githubUrl: "",
     featured: true,
     date: "2026-08-01",
@@ -36,8 +36,8 @@ export const PROJECTS: Project[] = [
   {
     title: "OneTouchET",
     description:
-      "Landing page, digital menu and business-card website for a local business — a full web presence in one package.",
-    techStack: ["React", "HTML", "CSS"],
+      "Full-stack web presence for a local business — landing page plus a backend-driven digital menu and business-card setter with verifier.",
+    techStack: ["Vite", "React", "Node.js", "Express", "MongoDB"],
     thumbnail: "",
     liveUrl: "https://onetouchet.com",
     githubUrl: "",
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     title: "BT Creative Landing Page",
     description:
       "Marketing landing page for BT Creative studio, built to showcase services and attract clients.",
-    techStack: ["React", "HTML", "CSS"],
+    techStack: ["Next.js", "CMS"],
     thumbnail: "",
     liveUrl: "https://btcreativeaddis.com",
     githubUrl: "",
