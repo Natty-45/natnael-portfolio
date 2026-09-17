@@ -37,55 +37,51 @@ export default function Experience() {
 
   return (
     <section className={styles.section} id="stack">
-      <Reveal>
-        <SectionHead label="experience" title="Where I've worked" />
-      </Reveal>
+      <div className={styles.container}>
+        <Reveal>
+          <SectionHead label="experience" title="Where I've worked" />
+        </Reveal>
 
-      <Reveal delay={60}>
-        <div className={styles.accordion}>
-          {/* Tab buttons */}
-          <div className={styles.tabs} role="tablist" aria-label="Job experience">
+        <Reveal delay={60}>
+          <div className={styles.accordion}>
+            <div className={styles.tabs} role="tablist" aria-label="Job experience">
+              {JOBS.map((job, i) => (
+                <button
+                  key={job.role}
+                  role="tab"
+                  aria-selected={i === activeIdx}
+                  aria-controls={`panel-${i}`}
+                  className={`${styles.tab} ${i === activeIdx ? styles.tabActive : ""}`}
+                  onClick={() => setActiveIdx(i)}
+                >
+                  <span className={styles.companyName}>{job.company}</span>
+                  <span className={styles.period}>{job.period}</span>
+                </button>
+              ))}
+            </div>
+
             {JOBS.map((job, i) => (
-              <button
+              <div
                 key={job.role}
-                role="tab"
-                id={`tab-${i}`}
-                aria-selected={i === activeIdx}
-                aria-controls={`panel-${i}`}
-                className={`${styles.tab} ${i === activeIdx ? styles.tabActive : ""}`}
-                onClick={() => setActiveIdx(i)}
+                role="tabpanel"
+                id={`panel-${i}`}
+                hidden={i !== activeIdx}
+                className={styles.panel}
               >
-                {job.company}
-              </button>
+                <h3 className={styles.role}>
+                  {job.role}
+                </h3>
+                <p className={styles.description}>{job.description}</p>
+                <ul className={styles.tech} role="list">
+                  {job.tech.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
-
-          {/* Tab panels */}
-          {JOBS.map((job, i) => (
-            <div
-              key={job.role}
-              role="tabpanel"
-              id={`panel-${i}`}
-              aria-labelledby={`tab-${i}`}
-              hidden={i !== activeIdx}
-              className={styles.panel}
-            >
-              <h3 className={styles.role}>
-                {job.role}
-                <span className={styles.at}> @ </span>
-                <span className={styles.company}>{job.company}</span>
-              </h3>
-              <p className={styles.period}>{job.period}</p>
-              <p className={styles.description}>{job.description}</p>
-              <ul className={styles.tech} role="list">
-                {job.tech.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }

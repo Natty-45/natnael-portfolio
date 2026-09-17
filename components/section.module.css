@@ -1,17 +1,42 @@
 .head {
   margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
 }
 
 .title {
   margin-top: 0.9rem;
-  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .sub {
   margin-top: 1rem;
-  max-width: 34rem;
+  max-width: 36rem;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Animated accent bar */
+.head::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-top: 1rem;
+  animation: barGrow 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+@keyframes barGrow {
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .head::after { animation: none; transform: scaleX(1); }
 }

@@ -21,7 +21,6 @@ function sortProjects(projects: Project[]): Project[] {
 
 function ProjectCard({ project }: { project: Project }) {
   const { title, description, techStack, liveUrl, githubUrl } = project;
-
   const link = liveUrl || githubUrl;
 
   return (
@@ -32,23 +31,26 @@ function ProjectCard({ project }: { project: Project }) {
       rel={link ? "noopener noreferrer" : undefined}
       {...(!link ? { tabIndex: -1, "aria-disabled": "true" } : {})}
     >
-      <div className={styles.cardTop}>
-        <h3 className={styles.title}>{title}</h3>
-        {link && (
-          <span className={styles.icon} aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </span>
-        )}
+      <div className={styles.cardGlow} />
+      <div className={styles.cardInner}>
+        <div className={styles.cardTop}>
+          <h3 className={styles.title}>{title}</h3>
+          {link && (
+            <span className={styles.icon} aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </span>
+          )}
+        </div>
+        <p className={styles.desc}>{description}</p>
+        <ul className={styles.tagRow} role="list">
+          {techStack.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
       </div>
-      <p className={styles.desc}>{description}</p>
-      <ul className={styles.tagRow} role="list">
-        {techStack.map((tag) => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
     </a>
   );
 }
@@ -58,21 +60,23 @@ export default function Projects() {
 
   return (
     <section className={styles.section} id="work">
-      <Reveal>
-        <SectionHead label="work" title="Things I've built" />
-      </Reveal>
+      <div className={styles.container}>
+        <Reveal>
+          <SectionHead label="work" title="Things I've built" />
+        </Reveal>
 
-      {sorted.length ? (
-        <div className={styles.list}>
-          {sorted.map((project, i) => (
-            <Reveal key={project.title} delay={(i % 3) * 70}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
-        </div>
-      ) : (
-        <p className={styles.empty}>Projects coming soon.</p>
-      )}
+        {sorted.length ? (
+          <div className={styles.grid}>
+            {sorted.map((project, i) => (
+              <Reveal key={project.title} delay={(i % 3) * 70}>
+                <ProjectCard project={project} />
+              </Reveal>
+            ))}
+          </div>
+        ) : (
+          <p className={styles.empty}>Projects coming soon.</p>
+        )}
+      </div>
     </section>
   );
 }

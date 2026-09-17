@@ -4,14 +4,14 @@ import { useEffect, useRef } from "react";
 import styles from "./cursor.module.css";
 
 export default function Cursor() {
-  const ringRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const ring = ringRef.current;
-    if (!ring) return;
+    const cursor = cursorRef.current;
+    if (!cursor) return;
 
     let x = window.innerWidth / 2;
     let y = window.innerHeight / 2;
@@ -25,7 +25,7 @@ export default function Cursor() {
       y = e.clientY;
       if (!visible) {
         visible = true;
-        ring.style.opacity = "1";
+        cursor.style.opacity = "1";
         rx = x;
         ry = y;
       }
@@ -33,18 +33,14 @@ export default function Cursor() {
 
     const onOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
-      const interactive = target?.closest(
-        "a, button, input, textarea, [role='button']"
-      );
-      ring.classList.toggle(styles.hovering, Boolean(interactive));
+      const interactive = target?.closest("a, button, input, textarea, [role='button']");
+      cursor.classList.toggle(styles.hovering, Boolean(interactive));
     };
 
     const loop = () => {
-      rx += (x - rx) * 0.16;
-      ry += (y - ry) * 0.16;
-      ring.style.transform = `translate(${rx - ring.offsetWidth / 2}px, ${
-        ry - ring.offsetHeight / 2
-      }px)`;
+      rx += (x - rx) * 0.12;
+      ry += (y - ry) * 0.12;
+      cursor.style.transform = `translate(${rx - cursor.offsetWidth / 2}px, ${ry - cursor.offsetHeight / 2}px)`;
       raf = requestAnimationFrame(loop);
     };
 
@@ -60,8 +56,8 @@ export default function Cursor() {
   }, []);
 
   return (
-    <div ref={ringRef} className={styles.ring} aria-hidden="true">
-      <span className={styles.inner} />
+    <div ref={cursorRef} className={styles.cursor} aria-hidden="true">
+      <span className={styles.dot} />
     </div>
   );
 }

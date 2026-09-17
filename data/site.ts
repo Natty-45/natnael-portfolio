@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Natnael Ayalew",
-  role: "Full-Stack Developer — Web & Mobile",
+  role: "Software Engineer — Full-Stack",
   email: "natiman075@gmail.com",
   github: "https://github.com/Natty-45",
   linkedin: "https://www.linkedin.com/in/natnael-ayalew-4n5",
