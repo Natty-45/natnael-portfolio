@@ -1,84 +1,119 @@
-"use client";
-
-import { useState } from "react";
+import { EDUCATION, LANGUAGES, SITE } from "@/data/site";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
+import { DownloadIcon, MapPinIcon } from "./icons";
 import styles from "./experience.module.css";
 
 const JOBS = [
   {
     role: "Freelance Full-Stack Developer",
     company: "Independent",
-    period: "2023 — Present",
-    description:
-      "Building web and mobile projects for clients: charity websites, landing pages, digital menus, business card sites, and a raffle app. Collaborating with teams and shipping end-to-end.",
-    tech: ["React", "React Native", "Node.js", "MongoDB", "Express"],
+    location: "Remote · Addis Ababa",
+    period: "2023 — Now",
+    current: true,
+    description: "End-to-end product work for founders and small businesses.",
+    tech: ["React", "Next.js", "Node.js", "Django"],
   },
   {
     role: "IT Support",
     company: "Melo Plus Trading",
+    location: "Addis Ababa",
     period: "2025 — 2026",
-    description:
-      "Managed systems and IT infrastructure for the business, ensuring reliable operations and technical support across the team.",
-    tech: ["IT Support", "Systems Admin", "Networking"],
+    current: false,
+    description: "Kept business systems, devices and networks running.",
+    tech: ["IT Support", "Systems", "Networking"],
   },
   {
-    role: "Full-Stack Developer",
+    role: "Frontend Developer",
     company: "BT Creative",
-    period: "2025 — 2025",
-    description:
-      "Started as a frontend developer and grew into a full-stack role, working across the entire product lifecycle — UI, server, and database. Built landing pages, a raffle app, and other client products.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "TypeScript"],
+    location: "Addis Ababa",
+    period: "May — Nov 2025",
+    current: false,
+    description: "Built responsive client sites with modern frontend tooling.",
+    tech: ["React", "Next.js", "TypeScript"],
   },
 ];
 
 export default function Experience() {
-  const [activeIdx, setActiveIdx] = useState(0);
-
   return (
-    <section className={styles.section} id="stack">
-      <div className={styles.container}>
+    <section className="section" id="experience">
+      <div className="wrap">
         <Reveal>
-          <SectionHead label="experience" title="Where I've worked" />
+          <SectionHead
+            index="02"
+            label="Experience"
+            title={
+              <>
+                Where I&apos;ve
+                <br />
+                <em>shipped.</em>
+              </>
+            }
+            sub="Client work, studio work and the support role that taught me how systems break."
+          />
         </Reveal>
 
-        <Reveal delay={60}>
-          <div className={styles.accordion}>
-            <div className={styles.tabs} role="tablist" aria-label="Job experience">
-              {JOBS.map((job, i) => (
-                <button
-                  key={job.role}
-                  role="tab"
-                  aria-selected={i === activeIdx}
-                  aria-controls={`panel-${i}`}
-                  className={`${styles.tab} ${i === activeIdx ? styles.tabActive : ""}`}
-                  onClick={() => setActiveIdx(i)}
-                >
-                  <span className={styles.companyName}>{job.company}</span>
+        <div className={styles.timeline}>
+          {JOBS.map((job, i) => (
+            <Reveal key={`${job.company}-${job.role}`} delay={i * 70}>
+              <article className={styles.job}>
+                <div className={styles.jobHead}>
                   <span className={styles.period}>{job.period}</span>
-                </button>
-              ))}
-            </div>
-
-            {JOBS.map((job, i) => (
-              <div
-                key={job.role}
-                role="tabpanel"
-                id={`panel-${i}`}
-                hidden={i !== activeIdx}
-                className={styles.panel}
-              >
-                <h3 className={styles.role}>
-                  {job.role}
-                </h3>
+                  {job.current && (
+                    <span className={styles.current}>
+                      <span className={styles.currentDot} />
+                      Currently
+                    </span>
+                  )}
+                </div>
+                <h3 className={styles.role}>{job.role}</h3>
+                <p className={styles.company}>
+                  {job.company}
+                  <span className={styles.sep}>·</span>
+                  <MapPinIcon />
+                  {job.location}
+                </p>
                 <p className={styles.description}>{job.description}</p>
                 <ul className={styles.tech} role="list">
-                  {job.tech.map((t) => (
-                    <li key={t}>{t}</li>
+                  {job.tech.map((tag) => (
+                    <li key={tag}>{tag}</li>
                   ))}
                 </ul>
-              </div>
-            ))}
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={80}>
+          <div className={styles.background}>
+            <div className={styles.backgroundItem}>
+              <span className={styles.backgroundLabel}>Education</span>
+              <strong>{EDUCATION.degree}</strong>
+              <p>
+                {EDUCATION.school} · {EDUCATION.period} · {EDUCATION.grade}
+              </p>
+            </div>
+
+            <div className={styles.backgroundItem}>
+              <span className={styles.backgroundLabel}>Languages</span>
+              <strong>
+                {LANGUAGES.map((language) => language.name).join(" · ")}
+              </strong>
+              <p>{LANGUAGES.map((language) => language.level).join(" · ")}</p>
+            </div>
+
+            <div className={styles.backgroundItem}>
+              <span className={styles.backgroundLabel}>Résumé</span>
+              <p>Education, experience and toolkit in one PDF.</p>
+              <a
+                className={`btn btnCanary ${styles.cvBtn}`}
+                href={`/${SITE.resumeFile}`}
+                download={SITE.resumeFile}
+              >
+                Download CV
+                <DownloadIcon />
+              </a>
+            </div>
           </div>
         </Reveal>
       </div>

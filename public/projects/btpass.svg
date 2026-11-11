@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 875" width="1400" height="875">
+  <defs>
+    <pattern id="bt-grid" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M46 0H0V46" fill="none" stroke="#f3f0e6" stroke-opacity="0.045" />
+    </pattern>
+    <linearGradient id="bt-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10201a" />
+      <stop offset="1" stop-color="#0a1a15" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="875" fill="url(#bt-bg)" />
+  <rect width="1400" height="875" fill="url(#bt-grid)" />
+  <circle cx="1120" cy="690" r="150" fill="#f4c84a" fill-opacity="0.08" />
+
+  <g font-family="'Segoe UI', Arial, sans-serif">
+    <rect x="76" y="46" width="46" height="46" rx="11" fill="#f4c84a" />
+    <text x="99" y="77" text-anchor="middle" font-size="22" font-weight="800" fill="#10201a">BT</text>
+    <text x="138" y="70" font-size="25" font-weight="700" fill="#f3f0e6">BTPass</text>
+    <text x="138" y="89" font-family="'Cascadia Code', Consolas, monospace" font-size="10" letter-spacing="2.4" fill="#f3f0e6" fill-opacity="0.48">EVENT GUEST MANAGEMENT</text>
+
+    <g font-family="'Cascadia Code', Consolas, monospace" font-size="12" letter-spacing="1.6" fill="#f3f0e6" fill-opacity="0.5">
+      <text x="716" y="74">OVERVIEW</text>
+      <text x="826" y="74">INVITATIONS</text>
+      <text x="958" y="74">USHERS</text>
+      <text x="1048" y="74">LOGS</text>
+    </g>
+    <g>
+      <rect x="1160" y="50" width="164" height="38" rx="19" fill="none" stroke="#f3f0e6" stroke-opacity="0.2" />
+      <circle cx="1183" cy="69" r="4" fill="#f4c84a" />
+      <text x="1196" y="74" font-family="'Cascadia Code', Consolas, monospace" font-size="10" letter-spacing="1.6" fill="#f3f0e6">LIVE EVENT</text>
+    </g>
+  </g>
+
+  <g font-family="'Segoe UI', Arial, sans-serif">
+    <text x="78" y="232" font-family="'Cascadia Code', Consolas, monospace" font-size="13" letter-spacing="3.2" fill="#f4c84a">EVENT ACCESS / 2026</text>
+    <text x="76" y="336" font-size="92" font-weight="800" letter-spacing="-4" fill="#f3f0e6">Every guest.</text>
+    <text x="76" y="428" font-size="92" font-weight="800" letter-spacing="-4" fill="#f4c84a">One scan.</text>
+    <text x="80" y="494" font-size="20" fill="#f3f0e6" fill-opacity="0.64">Invitations, encrypted QR passes and offline</text>
+    <text x="80" y="522" font-size="20" fill="#f3f0e6" fill-opacity="0.64">check-in — built for the pressure of event day.</text>
+
+    <g font-family="'Cascadia Code', Consolas, monospace" font-size="12" letter-spacing="0.8">
+      <rect x="80" y="570" width="154" height="40" rx="20" fill="#f3f0e6" fill-opacity="0.06" stroke="#f3f0e6" stroke-opacity="0.16" />
+      <text x="104" y="595" fill="#f3f0e6">Bulk invites</text>
+      <rect x="246" y="570" width="166" height="40" rx="20" fill="#f3f0e6" fill-opacity="0.06" stroke="#f3f0e6" stroke-opacity="0.16" />
+      <text x="270" y="595" fill="#f3f0e6">QR validation</text>
+      <rect x="424" y="570" width="158" height="40" rx="20" fill="#f3f0e6" fill-opacity="0.06" stroke="#f3f0e6" stroke-opacity="0.16" />
+      <text x="448" y="595" fill="#f3f0e6">Offline mode</text>
+    </g>
+
+    <g font-family="'Cascadia Code', Consolas, monospace" font-size="10" letter-spacing="1.5" fill="#f3f0e6" fill-opacity="0.36">
+      <text x="80" y="806">BUILT AT BT CREATIVE</text>
+      <text x="1324" y="806" text-anchor="end">NEXT.JS · SUPABASE · PWA</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="794" y="196" width="540" height="504" rx="26" fill="#f4c84a" />
+    <rect x="780" y="182" width="540" height="504" rx="26" fill="#fbf8f0" />
+    <path d="M780 208a26 26 0 0 1 26-26h488a26 26 0 0 1 26 26v44H780z" fill="#f4c84a" />
+    <text x="812" y="218" font-family="'Cascadia Code', Consolas, monospace" font-size="11" letter-spacing="2" fill="#10201a">BT-PASS / GUEST ACCESS</text>
+    <text x="1288" y="218" text-anchor="end" font-family="'Cascadia Code', Consolas, monospace" font-size="11" letter-spacing="1.4" fill="#10201a" fill-opacity="0.65">NO. 0184</text>
+
+    <text x="812" y="300" font-family="'Segoe UI', Arial, sans-serif" font-size="46" font-weight="800" letter-spacing="-1.5" fill="#10201a">ADMIT ONE</text>
+    <text x="814" y="326" font-family="'Cascadia Code', Consolas, monospace" font-size="11" letter-spacing="1.4" fill="#55655c">EVENT ACCESS · GENERAL</text>
+
+    <line x1="812" y1="350" x2="1288" y2="350" stroke="#10201a" stroke-opacity="0.14" stroke-dasharray="4 5" />
+
+    <rect x="812" y="378" width="196" height="196" rx="14" fill="#ffffff" stroke="#10201a" stroke-opacity="0.12" />
+    <g transform="translate(826,392)" fill="#10201a">
+      <rect x="0" y="0" width="56" height="56" />
+      <rect x="8" y="8" width="40" height="40" fill="#ffffff" />
+      <rect x="16" y="16" width="24" height="24" />
+      <rect x="112" y="0" width="56" height="56" />
+      <rect x="120" y="8" width="40" height="40" fill="#ffffff" />
+      <rect x="128" y="16" width="24" height="24" />
+      <rect x="0" y="112" width="56" height="56" />
+      <rect x="8" y="120" width="40" height="40" fill="#ffffff" />
+      <rect x="16" y="128" width="24" height="24" />
+      <rect x="72" y="0" width="8" height="8" />
+      <rect x="88" y="0" width="8" height="16" />
+      <rect x="64" y="24" width="16" height="8" />
+      <rect x="88" y="32" width="8" height="8" />
+      <rect x="72" y="48" width="16" height="8" />
+      <rect x="0" y="72" width="8" height="8" />
+      <rect x="24" y="72" width="16" height="8" />
+      <rect x="48" y="64" width="8" height="16" />
+      <rect x="64" y="72" width="24" height="8" />
+      <rect x="104" y="72" width="8" height="8" />
+      <rect x="120" y="64" width="16" height="8" />
+      <rect x="144" y="72" width="8" height="16" />
+      <rect x="160" y="72" width="8" height="8" />
+      <rect x="72" y="96" width="8" height="8" />
+      <rect x="88" y="96" width="24" height="8" />
+      <rect x="120" y="96" width="8" height="8" />
+      <rect x="144" y="96" width="24" height="8" />
+      <rect x="64" y="112" width="8" height="8" />
+      <rect x="80" y="120" width="16" height="8" />
+      <rect x="104" y="112" width="8" height="16" />
+      <rect x="120" y="120" width="8" height="8" />
+      <rect x="136" y="112" width="8" height="8" />
+      <rect x="152" y="120" width="8" height="8" />
+      <rect x="168" y="112" width="8" height="8" />
+      <rect x="64" y="144" width="16" height="8" />
+      <rect x="88" y="144" width="8" height="8" />
+      <rect x="104" y="152" width="16" height="8" />
+      <rect x="128" y="144" width="8" height="8" />
+      <rect x="144" y="152" width="16" height="8" />
+      <rect x="168" y="144" width="8" height="8" />
+      <rect x="72" y="168" width="8" height="8" />
+      <rect x="88" y="160" width="16" height="8" />
+      <rect x="112" y="168" width="8" height="8" />
+      <rect x="128" y="160" width="24" height="8" />
+      <rect x="160" y="168" width="16" height="8" />
+    </g>
+    <path d="M800 378h-12v40M800 574h-12v-40M1032 378h12v40M1032 574h12v-40" fill="none" stroke="#d45b36" stroke-width="3" />
+    <text x="812" y="606" font-family="'Cascadia Code', Consolas, monospace" font-size="10" letter-spacing="1.4" fill="#7a877e">GUEST 0184 · SCAN AT ENTRY</text>
+
+    <g font-family="'Cascadia Code', Consolas, monospace">
+      <text x="1062" y="404" font-size="10" letter-spacing="1.4" fill="#7a877e">STATUS</text>
+      <text x="1062" y="426" font-size="14" font-weight="700" fill="#10201a">READY TO SCAN</text>
+      <text x="1062" y="462" font-size="10" letter-spacing="1.4" fill="#7a877e">ACCESS</text>
+      <text x="1062" y="484" font-size="14" font-weight="700" fill="#10201a">ALL AREAS</text>
+      <text x="1062" y="520" font-size="10" letter-spacing="1.4" fill="#7a877e">ISSUED</text>
+      <text x="1062" y="542" font-size="14" font-weight="700" fill="#10201a">07 NOV 2026</text>
+      <rect x="1062" y="560" width="180" height="40" rx="20" fill="#1c5b44" />
+      <circle cx="1084" cy="580" r="4" fill="#f4c84a" />
+      <text x="1096" y="585" font-size="10" letter-spacing="1.2" fill="#f3f0e6">CHECKED IN · 14:32</text>
+    </g>
+
+    <g>
+      <rect x="760" y="598" width="256" height="60" rx="14" fill="#10201a" />
+      <circle cx="790" cy="628" r="11" fill="#f4c84a" fill-opacity="0.16" />
+      <path d="M785 623h10M785 628h10M785 633h10" stroke="#f4c84a" stroke-width="1.6" stroke-linecap="round" />
+      <text x="812" y="625" font-family="'Cascadia Code', Consolas, monospace" font-size="10" letter-spacing="1.2" fill="#f3f0e6" fill-opacity="0.5">USHER TERMINAL</text>
+      <text x="812" y="641" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#f3f0e6">Scan pass to check in</text>
+    </g>
+  </g>
+</svg>

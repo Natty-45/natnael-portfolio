@@ -1,30 +1,35 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Syne, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import Nav from "@/components/nav";
-import Cursor from "@/components/cursor";
 import Footer from "@/components/footer";
-import Hero from "@/components/hero";
 import "./globals.css";
 
-const grotesk = Space_Grotesk({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-syne",
 });
 
-const plexMono = IBM_Plex_Mono({
+const instrument = Instrument_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: "--font-mono",
+  variable: "--font-instrument",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jetbrains",
 });
 
 export const metadata: Metadata = {
-  title: "Natnael Ayalew — Software Engineer | Full-Stack",
+  title: "Natnael Ayalew — Full-Stack Software Engineer",
   description:
-    "Portfolio of Natnael Ayalew, a software engineer specializing in full-stack development. Building web and mobile applications with React, React Native, Node.js, and databases.",
+    "Portfolio of Natnael Ayalew, a full-stack software engineer in Addis Ababa. I build web apps, mobile experiences and digital business tools with React, Next.js, Node.js, Django and modern databases.",
   openGraph: {
-    title: "Natnael Ayalew — Software Engineer | Full-Stack",
+    title: "Natnael Ayalew — Full-Stack Software Engineer",
     description:
-      "Full-stack software engineer building modern web and mobile applications.",
+      "Full-stack software engineer building web, mobile and digital business products from Addis Ababa.",
     type: "website",
   },
 };
@@ -33,22 +38,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${grotesk.variable} ${plexMono.variable}`}>
+    <html
+      lang="en"
+      className={`${syne.variable} ${instrument.variable} ${jetbrains.variable}`}
+    >
       <body>
-        <a className="skip-link" href="#main">Skip to content</a>
-        <div className="glow-blob glow-blob-1" />
-        <div className="glow-blob glow-blob-2" />
-        <div className="grid-pattern" />
-        <div className="grain" />
-        <Cursor />
-        <div className="layout">
-          <Nav />
-          <div className="column">
-            <Hero />
-            <main id="main">{children}</main>
-            <Footer />
-          </div>
-        </div>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <Nav />
+        <main id="main">{children}</main>
+        <Footer />
       </body>
     </html>
   );

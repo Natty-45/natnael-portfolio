@@ -1,8 +1,11 @@
 export type Project = {
   title: string;
+  category: string;
+  year: string;
   description: string;
   techStack: string[];
-  thumbnail: string;
+  image: string;
+  imageAlt: string;
   liveUrl: string;
   githubUrl: string;
   featured: boolean;
@@ -12,21 +15,55 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     title: "Event Management System",
+    category: "Full-stack web platform",
+    year: "2026",
     description:
-      "Final year senior project — a full MERN platform for creating and managing events with attendees, scheduling and role-based dashboards.",
+      "A MERN events platform: publish events, manage registrations and run check-in from one dashboard.",
     techStack: ["MongoDB", "Express", "React", "Node.js"],
-    thumbnail: "",
+    image: "/projects/ems.webp",
+    imageAlt: "Event Management System homepage with event planning hero section",
     liveUrl: "https://ems-project-fkmp-eta.vercel.app/",
     githubUrl: "https://github.com/Natty-45/EMS__project",
-    featured: true,
+    featured: false,
     date: "2026-08-01",
   },
   {
-    title: "Hope for Ethiopia",
+    title: "Universal Cast",
+    category: "Casting platform",
+    year: "2026",
     description:
-      "Full-stack charity website for an Atlanta-based non-profit — backend handles donations and events, frontend showcases their mission and initiatives.",
+      "Landing site for a casting platform connecting East African talent with agencies and productions.",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    image: "/projects/universalcast.webp",
+    imageAlt: "Universal Cast landing page with a casting app mockup",
+    liveUrl: "https://universalcast.net",
+    githubUrl: "",
+    featured: false,
+    date: "2026-06-01",
+  },
+  {
+    title: "BTPass",
+    category: "Event guest management",
+    year: "2026",
+    description:
+      "Guest management for live events: bulk invitations, encrypted QR passes and offline check-in for ushers.",
+    techStack: ["Next.js", "Supabase", "Tailwind CSS", "PWA"],
+    image: "/projects/btpass.svg",
+    imageAlt: "BTPass guest pass and QR check-in interface",
+    liveUrl: "",
+    githubUrl: "https://github.com/bin-ym/BTPass",
+    featured: false,
+    date: "2026-02-01",
+  },
+  {
+    title: "Hope for Ethiopia",
+    category: "Non-profit website",
+    year: "2025",
+    description:
+      "Charity site for an Atlanta-based non-profit, covering its mission, events and donations with managed content behind the scenes.",
     techStack: ["Next.js", "Node.js", "Express", "MongoDB"],
-    thumbnail: "",
+    image: "/projects/hope.webp",
+    imageAlt: "Hope for Ethiopia charity website hero featuring a child holding a camera",
     liveUrl: "https://hope-for-ethiopia-charity.vercel.app/#/",
     githubUrl: "",
     featured: false,
@@ -34,46 +71,44 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "OneTouchET",
+    category: "Digital business tools",
+    year: "2025",
     description:
-      "Full-stack web presence for a local business — landing page plus backend-driven digital menu and business-card setter with verifier.",
-    techStack: ["Vite", "React", "Node.js", "Express", "MongoDB"],
-    thumbnail: "",
-    liveUrl: "https://scan.onetouchet.com",
-    githubUrl: "https://github.com/Natty-45/Abdi",
-    featured: false,
+      "NFC and QR platform for restaurants and local businesses: digital menus, smart business cards and a client dashboard.",
+    techStack: ["React", "Vite", "Tailwind CSS", "Django", "SQLite"],
+    image: "/projects/onetouch.webp",
+    imageAlt: "OneTouch smart NFC business card and digital menu website",
+    liveUrl: "https://onetouchet.com",
+    githubUrl: "",
+    featured: true,
     date: "2025-10-01",
   },
   {
-    title: "TapFlow — AI App",
+    title: "BT Creative",
+    category: "Studio website",
+    year: "2025",
     description:
-      "AI-powered application built on Google's Gemini API using Vite and React for intelligent responses and interactions.",
-    techStack: ["Vite", "React", "TypeScript", "Gemini API"],
-    thumbnail: "",
-    liveUrl: "https://abdi-phi.vercel.app",
-    githubUrl: "https://github.com/Natty-45/Abdi",
-    featured: false,
-    date: "2026-03-01",
-  },
-  {
-    title: "BT Creative Landing Page",
-    description:
-      "Marketing landing page for BT Creative studio, built to showcase services and attract clients.",
-    techStack: ["Next.js", "CMS"],
-    thumbnail: "",
-    liveUrl: "https://btcreativeaddis.com",
+      "Marketing site for an Addis Ababa creative studio, built around bold type and a content-managed portfolio.",
+    techStack: ["Next.js", "CMS", "Tailwind CSS"],
+    image: "/projects/btcreative.svg",
+    imageAlt: "BT Creative studio website with bold MAKE IT ICONIC typography",
+    liveUrl: "",
     githubUrl: "",
     featured: false,
     date: "2025-08-01",
   },
   {
-    title: "ETH Connect",
+    title: "EthConnect",
+    category: "Agency website",
+    year: "2026",
     description:
-      "Landing page for ETH Connect platform, designed to present the platform and drive user sign-ups.",
-    techStack: ["React", "HTML", "CSS"],
-    thumbnail: "",
+      "Agency site with a 3D-animated frontend and a CMS admin for services, projects and testimonials.",
+    techStack: ["Next.js", "Convex", "Three.js", "Tailwind CSS"],
+    image: "/projects/ethconnect.webp",
+    imageAlt: "EthConnect agency homepage with an animated digital innovation hero",
     liveUrl: "",
     githubUrl: "",
     featured: false,
-    date: "2025-04-01",
+    date: "2026-07-01",
   },
 ];

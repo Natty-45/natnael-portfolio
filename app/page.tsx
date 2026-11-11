@@ -1,16 +1,18 @@
-import About from "@/components/about";
-import Experience from "@/components/experience";
+import Hero from "@/components/hero";
+import SkillsTicker from "@/components/skills-ticker";
 import Projects from "@/components/projects";
-import CV from "@/components/cv";
+import Experience from "@/components/experience";
+import About from "@/components/about";
 import Contact from "@/components/contact";
 
 export default function Home() {
   return (
     <>
-      <About />
-      <Experience />
+      <Hero />
+      <SkillsTicker />
       <Projects />
-      <CV />
+      <Experience />
+      <About />
       <Contact />
     </>
   );

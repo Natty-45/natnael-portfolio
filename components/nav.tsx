@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { NAV_LINKS, SOCIALS, SITE } from "@/data/site";
-import { GithubIcon, LinkedinIcon, MailIcon } from "./icons";
+import { ArrowUpRightIcon, GithubIcon, LinkedinIcon, MailIcon } from "./icons";
 import styles from "./nav.module.css";
 
 const ICONS = { email: MailIcon, github: GithubIcon, linkedin: LinkedinIcon };
@@ -16,11 +16,12 @@ export default function Nav() {
   const handleScroll = useCallback(() => {
     const y = window.scrollY;
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    setScrolled(y > 40);
+    setScrolled(y > 24);
     setScrollProgress(maxScroll > 0 ? (y / maxScroll) * 100 : 0);
   }, []);
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
@@ -33,7 +34,7 @@ export default function Nav() {
           if (entry.isIntersecting) setActive(`#${entry.target.id}`);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px" }
+      { rootMargin: "-35% 0px -55% 0px" }
     );
     ids.forEach((id) => {
       const el = document.getElementById(id);
@@ -50,78 +51,104 @@ export default function Nav() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const close = () => setOpen(false);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
-  const socials = SOCIALS.map(({ key, href }) => {
-    const Icon = ICONS[key];
-    return { key, href, Icon };
-  });
+  const close = () => setOpen(false);
+  const socials = SOCIALS.map(({ key, href }) => ({ key, href, Icon: ICONS[key] }));
 
   return (
     <>
-      <header className={`${styles.topbar} ${scrolled ? styles.scrolled : ""} ${open ? styles.topbarOpen : ""}`.trim()}>
-        <div className={styles.scrollBar} style={{ width: `${scrollProgress}%` }} />
-        <a className={styles.logo} href="#about" onClick={close}>
-          <span className={styles.logoIcon}>&gt;_</span>
-          <span className={styles.logoName}>{SITE.name}</span>
-        </a>
+      <header
+        className={`${styles.bar} ${scrolled ? styles.scrolled : ""} ${open ? styles.open : ""}`.trim()}
+      >
+        <span
+          className={styles.progress}
+          style={{ transform: `scaleX(${scrollProgress / 100})` }}
+          aria-hidden="true"
+        />
+        <div className={`wrap ${styles.inner}`}>
+          <a className={styles.brand} href="#top" onClick={close} aria-label="Back to top">
+            <span className={styles.mark} aria-hidden="true">
+              N<span className={styles.markDot} />
+            </span>
+            <span className={styles.brandText}>
+              <strong>Natnael Ayalew</strong>
+              <small>Full-stack engineer</small>
+            </span>
+          </a>
 
-        <nav className={styles.desktopNav} aria-label="Primary">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              aria-current={active === link.href ? "true" : undefined}
-              className={`${styles.navLink} ${active === link.href ? styles.navLinkActive : ""}`}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className={styles.actions}>
-          <div className={styles.desktopSocials}>
-            {socials.map(({ key, href, Icon }) => (
+          <nav className={styles.links} aria-label="Primary">
+            {NAV_LINKS.map((link, i) => (
               <a
-                key={key}
-                href={href}
-                {...(key !== "email" ? { target: "_blank", rel: "noopener" } : {})}
-                aria-label={key}
-                className={styles.socialIcon}
+                key={link.href}
+                href={link.href}
+                aria-current={active === link.href ? "true" : undefined}
+                className={`${styles.link} ${active === link.href ? styles.linkActive : ""}`}
               >
-                <Icon />
+                <span className={styles.linkIndex}>0{i + 1}</span>
+                {link.label}
               </a>
             ))}
+          </nav>
+
+          <div className={styles.actions}>
+            <span className={styles.status}>
+              <span className={styles.pulse} />
+              {SITE.availability}
+            </span>
+            <a className={`btn btnPrimary ${styles.talk}`} href="#contact">
+              Let&apos;s talk
+              <ArrowUpRightIcon />
+            </a>
+            <button
+              className={styles.burger}
+              aria-expanded={open}
+              aria-controls="mobileMenu"
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen((o) => !o)}
+            >
+              <span />
+              <span />
+            </button>
           </div>
-          <button
-            className={styles.burger}
-            aria-expanded={open}
-            aria-controls="mobileMenu"
-            aria-label="Toggle menu"
-            onClick={() => setOpen((o) => !o)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
         </div>
       </header>
 
       {open && (
         <div className={styles.mobileMenu} id="mobileMenu">
           <nav className={styles.mobileLinks} aria-label="Primary">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link, i) => (
               <a key={link.href} href={link.href} onClick={close} className={styles.mobileLink}>
+                <span className={styles.mobileIndex}>0{i + 1}</span>
                 {link.label}
+                <ArrowUpRightIcon className={styles.mobileArrow} />
               </a>
             ))}
           </nav>
-          <div className={styles.mobileSocials}>
-            {socials.map(({ key, href, Icon }) => (
-              <a key={key} href={href} {...(key !== "email" ? { target: "_blank", rel: "noopener" } : {})} aria-label={key} className={styles.mobileSocialIcon}>
-                <Icon />
-              </a>
-            ))}
+
+          <div className={styles.mobileFoot}>
+            <a href={`mailto:${SITE.email}`} className={styles.mobileEmail}>
+              {SITE.email}
+            </a>
+            <div className={styles.mobileSocials}>
+              {socials.map(({ key, href, Icon }) => (
+                <a
+                  key={key}
+                  href={href}
+                  {...(key !== "email" ? { target: "_blank", rel: "noopener" } : {})}
+                  aria-label={key}
+                  className={styles.mobileSocial}
+                >
+                  <Icon />
+                </a>
+              ))}
+              <span className={styles.mobileLocation}>{SITE.location}</span>
+            </div>
           </div>
         </div>
       )}

@@ -1,9 +1,7 @@
-"use client";
-
-import { useMemo } from "react";
 import { PROJECTS, type Project } from "@/data/projects";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
+import { ArrowUpRightIcon, GithubIcon } from "./icons";
 import styles from "./projects.module.css";
 
 function parseDate(iso: string): number {
@@ -19,63 +17,141 @@ function sortProjects(projects: Project[]): Project[] {
   });
 }
 
-function ProjectCard({ project }: { project: Project }) {
-  const { title, description, techStack, liveUrl, githubUrl } = project;
-  const link = liveUrl || githubUrl;
+const sortedProjects = sortProjects(PROJECTS);
+const featuredProject = sortedProjects.find((project) => project.featured);
+const otherProjects = sortedProjects.filter((project) => !project.featured);
+
+function displayUrl(project: Project): string {
+  if (!project.liveUrl) {
+    if (!project.githubUrl) return "private client build";
+    return project.githubUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  }
+  return project.liveUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}
+
+function BrowserFrame({ project }: { project: Project }) {
+  return (
+    <div className={styles.frame}>
+      <div className={styles.frameBar}>
+        <span className={styles.frameDots} aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+        <span className={styles.frameUrl}>{displayUrl(project)}</span>
+        <span className={styles.frameYear}>{project.year}</span>
+      </div>
+      <div className={styles.frameImage}>
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          width={1400}
+          height={875}
+          decoding="async"
+        />
+      </div>
+    </div>
+  );
+}
+
+function ProjectLinks({ project, onDark = false }: { project: Project; onDark?: boolean }) {
+  if (!project.liveUrl && !project.githubUrl) {
+    return <span className={styles.privateTag}>Client / private build</span>;
+  }
 
   return (
-    <a
-      className={styles.card}
-      href={link || undefined}
-      target={link ? "_blank" : undefined}
-      rel={link ? "noopener noreferrer" : undefined}
-      {...(!link ? { tabIndex: -1, "aria-disabled": "true" } : {})}
-    >
-      <div className={styles.cardGlow} />
-      <div className={styles.cardInner}>
-        <div className={styles.cardTop}>
-          <h3 className={styles.title}>{title}</h3>
-          {link && (
-            <span className={styles.icon} aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </span>
-          )}
-        </div>
-        <p className={styles.desc}>{description}</p>
-        <ul className={styles.tagRow} role="list">
-          {techStack.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
-      </div>
-    </a>
+    <div className={styles.links}>
+      {project.liveUrl && (
+        <a
+          className={`btn ${onDark ? "btnOnDark" : "btnPrimary"} ${styles.linkBtn}`}
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Visit ${project.title} live site (opens in a new tab)`}
+        >
+          Live site
+          <ArrowUpRightIcon />
+        </a>
+      )}
+      {project.githubUrl && (
+        <a
+          className={`btn ${onDark ? "btnOutlineDark" : "btnGhost"} ${styles.linkBtn}`}
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${project.title} source on GitHub (opens in a new tab)`}
+        >
+          Source
+          <GithubIcon />
+        </a>
+      )}
+    </div>
   );
 }
 
 export default function Projects() {
-  const sorted = useMemo(() => sortProjects(PROJECTS), []);
-
   return (
-    <section className={styles.section} id="work">
-      <div className={styles.container}>
+    <section className="section" id="work">
+      <div className="wrap">
         <Reveal>
-          <SectionHead label="work" title="Things I've built" />
+          <SectionHead
+            index="01"
+            label="Selected work"
+            title={
+              <>
+                Built to be used,
+                <br />
+                <em>not just demoed.</em>
+              </>
+            }
+            sub={`${PROJECTS.length} builds for real clients, real audiences and real deadlines.`}
+          />
         </Reveal>
 
-        {sorted.length ? (
-          <div className={styles.grid}>
-            {sorted.map((project, i) => (
-              <Reveal key={project.title} delay={(i % 3) * 70}>
-                <ProjectCard project={project} />
-              </Reveal>
-            ))}
-          </div>
-        ) : (
-          <p className={styles.empty}>Projects coming soon.</p>
+        {featuredProject && (
+          <Reveal delay={40}>
+            <article className={styles.featured}>
+              <div className={styles.featuredMedia}>
+                <BrowserFrame project={featuredProject} />
+              </div>
+              <div className={styles.featuredBody}>
+                <div className={styles.featuredMeta}>
+                  <span className={styles.featuredBadge}>Featured build</span>
+                  <span>{featuredProject.category}</span>
+                  <span>{featuredProject.year}</span>
+                </div>
+                <h3>{featuredProject.title}</h3>
+                <p className={styles.featuredDescription}>{featuredProject.description}</p>
+                <ProjectLinks project={featuredProject} onDark />
+              </div>
+            </article>
+          </Reveal>
         )}
+
+        <div className={styles.grid}>
+          {otherProjects.map((project, i) => (
+            <Reveal key={project.title} delay={(i % 3) * 60}>
+              <article className={styles.card}>
+                <div className={styles.media}>
+                  <BrowserFrame project={project} />
+                </div>
+                <div className={styles.cardBody}>
+                  <div className={styles.meta}>
+                    <span>{project.category}</span>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <ul className={styles.tags} role="list">
+                    {project.techStack.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                  <ProjectLinks project={project} />
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

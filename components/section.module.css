@@ -1,42 +1,67 @@
 .head {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  position: relative;
+  margin-bottom: clamp(2.75rem, 5vw, 4.25rem);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.index {
+  color: var(--clay);
+}
+
+.label {
+  color: var(--muted);
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin-top: 1.15rem;
 }
 
 .title {
-  margin-top: 0.9rem;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.4rem, 5vw, 4.1rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 0.99;
+  letter-spacing: -0.05em;
+}
+
+.title em {
+  font-style: normal;
+  color: var(--forest);
 }
 
 .sub {
-  margin-top: 1rem;
-  max-width: 36rem;
-  color: var(--muted);
-  font-size: 1.05rem;
+  max-width: 26rem;
+  font-size: 0.96rem;
   line-height: 1.7;
+  color: var(--muted);
 }
 
-/* Animated accent bar */
-.head::after {
-  content: "";
-  display: block;
-  width: 3rem;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 2px;
-  margin-top: 1rem;
-  animation: barGrow 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transform-origin: left;
-  transform: scaleX(0);
-}
+@media (min-width: 900px) {
+  .row {
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.65fr);
+    gap: 3.5rem;
+    align-items: end;
+  }
 
-@keyframes barGrow {
-  to { transform: scaleX(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .head::after { animation: none; transform: scaleX(1); }
+  .sub {
+    justify-self: end;
+    padding-bottom: 0.35rem;
+  }
 }

@@ -1,208 +1,350 @@
 .hero {
   position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding-block: 4rem;
-}
-
-/* ---------- animated background ---------- */
-.bgOrbs {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  padding-top: calc(var(--nav-h) + clamp(2.75rem, 6vw, 5.5rem));
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
   overflow: hidden;
 }
 
-.orb {
+.hero::before {
+  content: "";
   position: absolute;
+  top: 6rem;
+  right: -7rem;
+  width: 26rem;
+  height: 26rem;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.4;
-  animation: orbFloat 12s ease-in-out infinite;
+  border: 1px dashed rgba(28, 91, 68, 0.22);
+  pointer-events: none;
 }
 
-.orb {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, #00e5a0, #00ffb8);
-  top: -10%;
-  left: -5%;
-  opacity: 0.15;
-}
-
-.orb2 {
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, #ff6b35, #ff8f5e);
-  bottom: -10%;
-  right: -5%;
-  opacity: 0.1;
-  animation-delay: -4s;
-  animation-duration: 16s;
-}
-
-.orb3 {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, #6ea8fe, #00e5a0);
-  top: 50%;
-  left: 50%;
-  opacity: 0.08;
-  animation-delay: -8s;
-  animation-duration: 20s;
-}
-
-@keyframes orbFloat {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(30px, -40px) scale(1.05);
-  }
-  50% {
-    transform: translate(-20px, 20px) scale(0.95);
-  }
-  75% {
-    transform: translate(15px, 30px) scale(1.02);
-  }
-}
-
-/* ---------- grid lines ---------- */
-.gridLines {
+.hero::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(rgba(0, 229, 160, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 160, 0.04) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  animation: gridPulse 8s ease-in-out infinite;
+  top: 16rem;
+  right: 2rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: rgba(244, 200, 74, 0.3);
+  filter: blur(2px);
+  pointer-events: none;
 }
 
-@keyframes gridPulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-/* ---------- hero content ---------- */
-.heroContent {
+.grid {
   position: relative;
   z-index: 1;
-  text-align: center;
-  max-width: 48rem;
-  padding-inline: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(3.25rem, 6vw, 5rem);
+  align-items: center;
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.2s;
-}
-
-.name {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #ffffff 0%, var(--accent-strong) 60%, #ff6b35 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.4s;
-}
-
-.tagline {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  font-weight: 500;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  min-height: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.6s;
-}
-
-.typedText {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.subtitle {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--muted);
-  max-width: 36rem;
-  margin: 0 auto 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.8s;
-}
-
-.cta {
+/* ---------- copy ---------- */
+.kicker {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  padding: 0.42rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(251, 248, 240, 0.6);
   font-family: var(--font-mono);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--bg);
-  background: var(--accent);
-  border-radius: var(--radius);
-  padding: 0.9rem 2rem;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 1s, ctaPulse 3s ease-in-out 1.8s infinite;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px -6px var(--accent-glow);
-  background: var(--accent-strong);
-  animation: none;
+.kickerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clay);
 }
 
-.cta svg {
-  transition: transform 0.2s ease;
+.title {
+  margin-top: 1.5rem;
+  font-size: clamp(2.3rem, 11.2vw, 4.4rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
 }
 
-.cta:hover svg {
-  transform: translate(3px, -3px);
+.firstName,
+.lastName {
+  display: block;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
+.lastName {
+  position: relative;
+  width: fit-content;
+  color: transparent;
+  -webkit-text-stroke: clamp(1.4px, 0.16vw, 2.2px) var(--ink);
+}
+
+.star {
+  position: absolute;
+  top: 0.02em;
+  right: -0.62em;
+  width: 0.3em;
+  height: 0.3em;
+  color: var(--clay);
+  animation: spin 14s linear infinite;
+}
+
+@keyframes spin {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
 
-@keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 229, 160, 0.3); }
-  50% { box-shadow: 0 0 0 12px rgba(0, 229, 160, 0); }
+.lead {
+  max-width: 35rem;
+  margin-top: 1.75rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.18rem);
+  line-height: 1.72;
+  color: var(--muted);
+}
+
+.lead mark {
+  background: linear-gradient(transparent 58%, var(--canary) 58%);
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2.25rem;
+}
+
+.proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.25rem;
+  margin-top: 2.75rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.proof li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.proof strong {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.proof span {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- map card ---------- */
+.mapCol {
+  position: relative;
+}
+
+.mapCard {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: var(--forest-deep);
+  color: var(--paper);
+  padding: 0.95rem;
+  box-shadow: 12px 12px 0 0 var(--canary);
+  transform: rotate(-1.2deg);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.mapCard:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 16px 16px 0 0 var(--canary);
+}
+
+.mapHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0.4rem 0.8rem;
+  border-bottom: 1px solid rgba(243, 240, 230, 0.14);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.mapVersion {
+  color: var(--canary);
+}
+
+.mapSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mapText {
+  font-family: var(--font-mono);
+}
+
+.mapNode rect {
+  fill: #16382c;
+  stroke: rgba(243, 240, 230, 0.16);
+  stroke-width: 1;
+}
+
+.nodeLabel {
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  fill: var(--canary);
+}
+
+.nodeValue {
+  font-size: 8.5px;
+  fill: var(--paper);
+  fill-opacity: 0.82;
+}
+
+.mapCore rect {
+  fill: var(--canary);
+}
+
+.coreLabel {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  fill: var(--ink);
+}
+
+.coreValue {
+  font-size: 8px;
+  font-weight: 500;
+  fill: var(--ink);
+  fill-opacity: 0.72;
+}
+
+.mapLines {
+  stroke: rgba(243, 240, 230, 0.2);
+  stroke-width: 1.1;
+}
+
+.mapFlows {
+  stroke: var(--canary);
+  stroke-width: 1.6;
+  stroke-dasharray: 3 9;
+  opacity: 0.9;
+  animation: flow 2.8s linear infinite;
+}
+
+.flowDelay {
+  animation-delay: -1.4s;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+.mapJoints circle {
+  fill: var(--canary);
+  fill-opacity: 0.75;
+}
+
+.mapFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 0.4rem 0.25rem;
+  border-top: 1px solid rgba(243, 240, 230, 0.14);
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  letter-spacing: 0.06em;
+}
+
+.mapStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: uppercase;
+  color: rgba(243, 240, 230, 0.7);
+}
+
+.mapDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--canary);
+  box-shadow: 0 0 8px var(--canary);
+}
+
+.mapFoot code {
+  font-family: inherit;
+  color: var(--canary);
+}
+
+.mapNote {
+  margin-top: 1.6rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--clay);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (min-width: 720px) {
+  .title {
+    font-size: clamp(3.2rem, 6.3vw, 5.85rem);
+  }
+}
+
+@media (min-width: 980px) {
+  .grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.82fr);
+  }
+}
+
+@media (max-width: 979px) {
+  .mapCol {
+    max-width: 560px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .mapCard {
+    transform: rotate(-0.6deg);
+    box-shadow: 9px 9px 0 0 var(--canary);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .eyebrow, .name, .tagline, .subtitle, .cta {
-    opacity: 1;
+  .star {
     animation: none;
   }
-  .bgOrbs, .gridLines { animation: none; }
+
+  .mapFlows {
+    animation: none;
+  }
+
+  .mapCard,
+  .mapCard:hover {
+    transform: none;
+    transition: none;
+  }
 }
