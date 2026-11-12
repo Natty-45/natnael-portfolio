@@ -35,6 +35,17 @@
   -webkit-text-stroke: 1px rgba(243, 240, 230, 0.07);
   pointer-events: none;
   user-select: none;
+  animation: talkDrift 9s ease-in-out infinite;
+}
+
+@keyframes talkDrift {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-18px) translateX(-10px);
+  }
 }
 
 .inner {
@@ -400,10 +411,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .panelRow,
-  .panelArrow,
-  .modalClose {
-    transition: none;
-  }
-}

@@ -374,8 +374,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .pulse {
-    animation: none;
-  }
-}

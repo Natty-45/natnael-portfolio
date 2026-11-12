@@ -23,7 +23,7 @@ export default function SkillsTicker() {
             {SKILLS.map((skill) => (
               <span key={skill}>
                 {skill}
-                <b>✳</b>
+                <b>·</b>
               </span>
             ))}
           </div>

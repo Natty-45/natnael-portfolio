@@ -10,6 +10,7 @@ import {
   MapPinIcon,
 } from "./icons";
 import { sendContactEmail } from "@/app/actions/send-email";
+import Reveal from "./reveal";
 import styles from "./contact.module.css";
 
 export default function Contact() {
@@ -42,7 +43,7 @@ export default function Contact() {
   return (
     <section className={styles.section} id="contact">
       <div className={`wrap ${styles.inner}`}>
-        <div className={styles.copy}>
+        <Reveal variant="left" className={styles.copy}>
           <p className={styles.meta}>
             <span className={styles.metaIndex}>04</span>
             <span>Contact</span>
@@ -77,9 +78,9 @@ export default function Contact() {
           <p className={styles.note}>
             Based in Addis Ababa · GMT+3 · I usually reply within a day.
           </p>
-        </div>
+        </Reveal>
 
-        <div className={styles.panel}>
+        <Reveal variant="right" delay={100} className={styles.panel}>
           <span className={styles.panelLabel}>Direct lines</span>
 
           <a className={styles.panelRow} href={`mailto:${SITE.email}`}>
@@ -139,7 +140,7 @@ export default function Contact() {
             <span className={styles.statusDot} />
             {SITE.status}
           </div>
-        </div>
+        </Reveal>
       </div>
 
       <dialog

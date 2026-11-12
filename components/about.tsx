@@ -1,6 +1,7 @@
 import { EDUCATION, SITE } from "@/data/site";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
+import Parallax from "./parallax";
 import { MapPinIcon } from "./icons";
 import styles from "./about.module.css";
 
@@ -43,7 +44,7 @@ export default function About() {
         </Reveal>
 
         <div className={styles.grid}>
-          <Reveal className={styles.bio} delay={80}>
+          <Reveal className={styles.bio} delay={80} variant="left">
             <p className={styles.statement}>
               I&apos;m Natnael — a software engineer in Addis Ababa who turns
               rough ideas into products people can actually use.
@@ -66,7 +67,8 @@ export default function About() {
             </div>
           </Reveal>
 
-          <Reveal delay={160} className={styles.cardWrap}>
+          <Reveal delay={160} className={styles.cardWrap} variant="right">
+            <Parallax speed={0.04}>
             <aside className={styles.profileCard} aria-label="Developer profile">
               <div className={styles.cardTop}>
                 <span>Developer profile</span>
@@ -111,6 +113,7 @@ export default function About() {
                 </span>
               </div>
             </aside>
+            </Parallax>
           </Reveal>
         </div>
       </div>

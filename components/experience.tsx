@@ -1,6 +1,7 @@
 import { EDUCATION, LANGUAGES, SITE } from "@/data/site";
 import SectionHead from "./section-head";
 import Reveal from "./reveal";
+import Parallax from "./parallax";
 import { DownloadIcon, MapPinIcon } from "./icons";
 import styles from "./experience.module.css";
 
@@ -55,7 +56,7 @@ export default function Experience() {
 
         <div className={styles.timeline}>
           {JOBS.map((job, i) => (
-            <Reveal key={`${job.company}-${job.role}`} delay={i * 70}>
+            <Reveal key={`${job.company}-${job.role}`} delay={i * 70} variant="left">
               <article className={styles.job}>
                 <div className={styles.jobHead}>
                   <span className={styles.period}>{job.period}</span>
@@ -84,7 +85,8 @@ export default function Experience() {
           ))}
         </div>
 
-        <Reveal delay={80}>
+        <Reveal delay={80} variant="up">
+          <Parallax speed={0.04}>
           <div className={styles.background}>
             <div className={styles.backgroundItem}>
               <span className={styles.backgroundLabel}>Education</span>
@@ -115,6 +117,7 @@ export default function Experience() {
               </a>
             </div>
           </div>
+          </Parallax>
         </Reveal>
       </div>
     </section>

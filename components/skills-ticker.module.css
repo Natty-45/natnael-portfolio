@@ -37,8 +37,8 @@
 }
 
 .group b {
-  font-size: 0.72rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--clay);
 }
 
@@ -48,12 +48,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-  }
-
-  .group:last-child {
-    display: none;
-  }
-}
