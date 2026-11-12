@@ -1,4 +1,5 @@
 import { SITE, SOCIALS } from "@/data/site";
+import Link from "next/link";
 import {
   ArrowUpIcon,
   ClockIcon,
@@ -64,9 +65,9 @@ export default function Footer() {
             })}
           </div>
 
-          <a className={styles.top} href="#top" aria-label="Back to top">
+          <Link className={styles.top} href="/#top" aria-label="Back to top">
             <ArrowUpIcon />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

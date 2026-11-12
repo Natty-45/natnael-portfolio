@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { NAV_LINKS, SOCIALS, SITE } from "@/data/site";
 import { ArrowUpRightIcon, GithubIcon, LinkedinIcon, MailIcon } from "./icons";
 import styles from "./nav.module.css";
@@ -72,7 +73,7 @@ export default function Nav() {
           aria-hidden="true"
         />
         <div className={`wrap ${styles.inner}`}>
-          <a className={styles.brand} href="#top" onClick={close} aria-label="Back to top">
+          <Link className={styles.brand} href="/#top" onClick={close} aria-label="Back to top">
             <span className={styles.mark} aria-hidden="true">
               N<span className={styles.markDot} />
             </span>
@@ -80,19 +81,19 @@ export default function Nav() {
               <strong>Natnael Ayalew</strong>
               <small>Full-stack engineer</small>
             </span>
-          </a>
+          </Link>
 
           <nav className={styles.links} aria-label="Primary">
             {NAV_LINKS.map((link, i) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                href={`/${link.href}`}
                 aria-current={active === link.href ? "true" : undefined}
                 className={`${styles.link} ${active === link.href ? styles.linkActive : ""}`}
               >
                 <span className={styles.linkIndex}>0{i + 1}</span>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -101,10 +102,10 @@ export default function Nav() {
               <span className={styles.pulse} />
               {SITE.availability}
             </span>
-            <a className={`btn btnPrimary ${styles.talk}`} href="#contact">
+            <Link className={`btn btnPrimary ${styles.talk}`} href="/#contact">
               Let&apos;s talk
               <ArrowUpRightIcon />
-            </a>
+            </Link>
             <button
               className={styles.burger}
               aria-expanded={open}
@@ -123,11 +124,16 @@ export default function Nav() {
         <div className={styles.mobileMenu} id="mobileMenu">
           <nav className={styles.mobileLinks} aria-label="Primary">
             {NAV_LINKS.map((link, i) => (
-              <a key={link.href} href={link.href} onClick={close} className={styles.mobileLink}>
+              <Link
+                key={link.href}
+                href={`/${link.href}`}
+                onClick={close}
+                className={styles.mobileLink}
+              >
                 <span className={styles.mobileIndex}>0{i + 1}</span>
                 {link.label}
                 <ArrowUpRightIcon className={styles.mobileArrow} />
-              </a>
+              </Link>
             ))}
           </nav>
 
